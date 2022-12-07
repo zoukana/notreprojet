@@ -32,92 +32,92 @@ class postcontroller extends Controller
 
     //controle du formulaire
 
-    public function inscription(Request $request){
+    public function inscription(Request $request)
+    {
         $u = new assane();
 
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');
         $email = $request->get('email');
-        $password= $request->get('password');
-        $role=$request->get('role');
-        $password_confirmation=$request->get('password_confirmation');
+        $password = $request->get('password');
+        $role = $request->get('role');
+        $password_confirmation = $request->get('password_confirmation');
 
         $validation = $request->validate([
             'nom' => ['required'],
             'prenom' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
-            'role'=>['required'],
-            'password'=>['required'],
+            'role' => ['required'],
+            'password' => ['required'],
             'password_confirmation' => 'required_with:password|same:password',
 
 
         ]);
         //controle du mail existant
-     foreach ($u::all() as $user) {
+        foreach ($u::all() as $user) {
 
-           if($user->email === $email){
+            if ($user->email === $email) {
 
-            $validation = $request->validate([
+                $validation = $request->validate([
+                    'email' => ['confirmed'],
 
-                'email'=>['confirmed'],
-
-            ]);
+                ]);
             }
-     }
+        }
 
-            $res = new assane();
+        $res = new assane();
 
-            $res->matricule = $this->generateMatricule();
-            $res->prenom=$request->get('prenom');
-            $res->nom=$request->get('nom');
-            $res->email=$request->get('email');
-            $res->password=$request->get('password');
-            $res->role=$request->get('role');
-            $res->date_inscription=date('y-m-d');
-            $res->date_modification=null;
-            $res->date_archivage=null;
-            $res->photo=null;
-            $res->save();
+        $res->matricule = $this->generateMatricule();
+        $res->prenom = $request->get('prenom');
+        $res->nom = $request->get('nom');
+        $res->email = $request->get('email');
+        $res->password = $request->get('password');
+        $res->role = $request->get('role');
+        $res->date_inscription = date('y-m-d');
+        $res->date_modification = null;
+        $res->date_archivage = null;
+        $res->photo = null;
+        $res->etat = 1;
+        $res->save();
 
         return view("popup");
 
     }
 
-protected function connexion(Request $request){
-    $u = new assane();
-    $u = $request->validate([
-        'password' => ['required'],
-        'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
+    protected function connexion(Request $request)
+    {
+        $u = new assane();
+        $u = $request->validate([
+            'password' => ['required'],
+            'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
 
 
-    ]);
-    //redirection
-   $users = assane::all();
-   foreach($users as $user) {
-    if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-        if($user->role === 'administrateur'){ return redirect('/api/post');}
-        elseif ( $user->role === 'user_simple') { return'user';}
-    
-    
-   }
+        ]);
+        //redirection
+        $users = assane::all();
+        foreach ($users as $user) {
+            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
+                if ($user->role === 'administrateur') {
+                    return redirect('/api/post');
+                } else
+                 {
+                    return 'user';
 
-  
-  
-}
- 
-$validation = $request->validate([
+                }
 
-    'email'=>['accepted'],
 
-]);
 
-  
- 
-  
- 
+            }
 
-}
+        }
+
+        $validation = $request->validate([
+            'email' => ['accepted'],
+
+        ]);
+
+
 
 
 
@@ -125,6 +125,7 @@ $validation = $request->validate([
     }
 
 
+}
 
 
 
