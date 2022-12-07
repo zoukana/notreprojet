@@ -22,7 +22,32 @@ class PostController extends Controller
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
-       return view('admin',['users' => $users]);
+       return view('archive',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
+    public function user()
+    {
+        //$users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('user',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
+    public function archive()
+    {
+        //$users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
         //return view('admin',['user' => $user]);
         //$users = DB::statement('assane')->orderBy('id','desc')->paginate(5);
         //return view('admin',compact('users'));
@@ -133,7 +158,30 @@ class PostController extends Controller
         $users = assane::all();
         $users = assane::paginate();
         $users = assane::where('prenom', $request->get('prenom'))->get()->paginate();
+        $users = assane::where('prenom', $request->get('prenom'))->get();
 
         return view("admin" ,["users"=>$users]);
     }
+    public function Role(Request $requ,string $id)
+{
+    $user = assane::findOrFail($id);
+    $user->email=$request->get("email");
+   
+  
+    if($user->role === "admin")
+    {
+        return redirect("/api/post");
+    }
+    else  if($user->role === "user")
+    {
+        return redirect("/");
+    }
+    
+    else  if($user->etat === 1)
+    {
+        $user->save();
+        return redirect("/");
+    }
+
+}
 }
