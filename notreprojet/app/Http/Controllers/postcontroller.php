@@ -88,26 +88,23 @@ protected function connexion(Request $request){
     
    }
 
-  else{
-    $validation = $request->validate([
-
-        'email'=>['accepted'],
-
-    ]);
-  }
+  
+  
 }
  
-  /*  $user = assane::findOrFail($id);
-   $user->email=$request->get("email"); */
+$validation = $request->validate([
+
+    'email'=>['accepted'],
+
+]);
+
   
  
   
  
 
 } 
-/* if ($user->role === 'admin'){
-    return redirect('/api/post');
-} */
+
 
 
 } 
