@@ -83,14 +83,32 @@ protected function connexion(Request $request){
    $users = assane::all();
    foreach($users as $user) {
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-        return redirect('/api/post');
-    }
+        if($user->role === 'administrateur'){ return redirect('/api/post');}
+        elseif ( $user->role === 'user_simple') { return'user';}
+    
+    
    }
 
-   return redirect('/');
+  else{
+    $validation = $request->validate([
+
+        'email'=>['accepted'],
+
+    ]);
+  }
+}
+ 
+  /*  $user = assane::findOrFail($id);
+   $user->email=$request->get("email"); */
+  
+ 
+  
+ 
 
 } 
-
+/* if ($user->role === 'admin'){
+    return redirect('/api/post');
+} */
 
 
 } 
