@@ -22,7 +22,7 @@ Route::get('/post', function () {
     return view('inscription');
 });
 
-/* Route::get('/modal', function () {
+/*  Route::get('/modal', function () {
     return view('popup');
 }); */
 

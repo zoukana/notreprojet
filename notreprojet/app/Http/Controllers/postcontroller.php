@@ -79,8 +79,9 @@ class postcontroller extends Controller
             $res->date_modification=null;
             $res->date_archivage=null;
             $res->photo=null;
-             $res->save();
+            $res->save();
 
+        return view("popup");
 
     }
     
