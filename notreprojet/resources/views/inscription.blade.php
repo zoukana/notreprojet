@@ -37,9 +37,9 @@
     <div class="col-md-6">
       <label for="inputState" class="form-label">role</label>
       <select id="role" name="role" class="form-select @error('nom') is-invalid @enderror">
-        <option   selected></option>
-        <option     name="role">administrateur</option>
-        <option  name="role">user_simple</option>
+        <option selected></option>
+        <option name="role">administrateur</option>
+        <option name="role">user_simple</option>
       </select>
       @error('role')
       <div class="text-danger">{{ $message }}</div>

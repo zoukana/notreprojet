@@ -7,7 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\assane;
 use PhpParser\Node\Expr\Cast\String_;
-
+use Illuminate\Pagination\Paginator;
 class PostController extends Controller
 {
     /**
@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //$users = assane::all();
+        $users = assane::all();
 
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
@@ -49,11 +49,14 @@ class PostController extends Controller
        return view('archive',['users' => $users]);
 
         //return view('admin',['user' => $user]);
+        //$users = DB::statement('assane')->orderBy('id','desc')->paginate(5);
+        //return view('admin',compact('users'));
     }
 
     // app > http > controllers > EmployeeController.php
 
     public function getData(){
+
       //$user = assane::paginate(5);
       //return view('admin',['users' => $users])
     }
@@ -152,6 +155,9 @@ class PostController extends Controller
 
     public function chercheUser(Request $request)
     {
+        $users = assane::all();
+        $users = assane::paginate();
+        $users = assane::where('prenom', $request->get('prenom'))->get()->paginate();
         $users = assane::where('prenom', $request->get('prenom'))->get();
 
         return view("admin" ,["users"=>$users]);
