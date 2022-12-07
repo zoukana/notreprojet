@@ -97,13 +97,10 @@ protected function connexion(Request $request){
    foreach($users as $user) {
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
         if($user->role === 'administrateur'){ return redirect('/api/post');}
-        elseif ( $user->role === 'user_simple') { return'user';}
+        elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
     
     
-   }
-
-  
-  
+   }  
 }
  
 $validation = $request->validate([
@@ -112,15 +109,7 @@ $validation = $request->validate([
 
 ]);
 
-  
- 
-  
- 
-
 }
-
-
-
 
     }
 

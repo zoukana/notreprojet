@@ -54,6 +54,7 @@ Route::get('/admin', function () {
 
 
 
+
 Route::post("/connexion",[postcontroller::class,"connexion"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
 
