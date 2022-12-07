@@ -32,7 +32,8 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-                        hgff
+                        <img src="/image/lucifer.JPG" class="rounded-circle" height="80" width="80" alt="">
+                        matricule
                     </span>
 
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
