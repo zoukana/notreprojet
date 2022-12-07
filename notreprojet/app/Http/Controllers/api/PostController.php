@@ -22,7 +22,32 @@ class PostController extends Controller
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
-       return view('admin',['users' => $users]);
+       return view('archive',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
+    public function user()
+    {
+        //$users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('user',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
+    public function archive()
+    {
+        //$users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
         //return view('admin',['user' => $user]);
     }
 
@@ -128,7 +153,7 @@ class PostController extends Controller
     public function chercheUser(Request $request)
     {
         $users = assane::where('prenom', $request->get('prenom'))->get();
-        
+
         return view("admin" ,["users"=>$users]);
     }
 }

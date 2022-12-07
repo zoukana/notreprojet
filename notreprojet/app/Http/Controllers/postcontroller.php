@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class postcontroller extends Controller
 {
-    
+
     //controle du formulaire
 
     public function inscription(Request $request){
         $u = new assane();
-     /*    dd($u::all()); */
 
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');

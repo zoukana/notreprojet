@@ -31,6 +31,14 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/user', function () {
+    return view('user');
+});
+
+Route::get('/archive', function () {
+    return view('archive');
+});
+
 
 /*  Route::get('/connecxion', function () {
     return view('connecxion');
@@ -48,6 +56,8 @@ Route::get('/admin', function () {
 
 Route::get("/connexion",[postcontroller::class,"inscription"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
+
+Route::get("/user",[postcontroller::class,"user"]);
 
 Route::get('/modification', function () {
     return view('modification');
