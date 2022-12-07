@@ -51,7 +51,6 @@ class postcontroller extends Controller
             }
      }
 
-
             $res = new assane();
             $res->prenom=$request->get('prenom');
             $res->nom=$request->get('nom');
