@@ -131,4 +131,26 @@ class PostController extends Controller
         
         return view("admin" ,["users"=>$users]);
     }
+    public function Role(Request $requ,string $id)
+{
+    $user = assane::findOrFail($id);
+    $user->email=$request->get("email");
+   
+  
+    if($user->role === "admin")
+    {
+        return redirect("/api/post");
+    }
+    else  if($user->role === "user")
+    {
+        return redirect("/");
+    }
+    
+    else  if($user->etat === 1)
+    {
+        $user->save();
+        return redirect("/");
+    }
+
+}
 }
