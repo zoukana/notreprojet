@@ -55,8 +55,6 @@ Route::get('/modification', function () {
 
 
 
-Route::get('/admin', 'postController@index')->name('admin')->middleware('admin');
-Route::get('/user', 'postController@index')->name('user')->middleware('user');
 
 
 
