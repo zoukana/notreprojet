@@ -53,6 +53,10 @@ Route::get('/admin', function () {
 Route::get('/user', function () {
     return view('user');
 });
+/*
+Route::get('/archive', function () {
+    return view('archive');
+}); */
 
 
 

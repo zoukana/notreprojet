@@ -27,3 +27,5 @@ Route::post('chercheUser', [PostController::class, "chercheUser"]);
 Route::post('post/user', [PostController::class, "user"]);
 Route::post('Role', [PostController::class, "Role"]);
 Route::get('userSimple', [PostController::class, "userSimple"]);
+Route::get('archive', [PostController::class, "archive"]);
+

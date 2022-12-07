@@ -40,7 +40,7 @@
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
                        nom prenom
                         <span style="margin-left: 4rem">
-                            <h4><a href="('archive')" class="text-white">liste des archives</a> </h4>
+                            <h4><a href="/api/archive" class="text-white">liste des archives</a> </h4>
                         </span>
                     </span>
 
