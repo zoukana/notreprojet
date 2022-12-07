@@ -25,3 +25,5 @@ Route::get('post/editForm/{id}', [PostController::class, "editForm"]);
 Route::post('post/edit/{id}', [PostController::class, "edit"]);
 Route::post('chercheUser', [PostController::class, "chercheUser"]);
 Route::post('post/user', [PostController::class, "user"]);
+Route::post('Role', [PostController::class, "Role"]);
+

@@ -22,12 +22,15 @@ Route::get('/post', function () {
     return view('inscription');
 });
 
+/*  Route::get('/modal', function () {
+    return view('popup');
+}); */
 
 Route::get('/', function () {
     return view('connexion');
 });
 
-Route::get('/admin', function () {
+/* Route::get('/admin', function () {
     return view('admin');
 });
 
@@ -40,13 +43,10 @@ Route::get('/archive', function () {
 });
 
 
-/*  Route::get('/connecxion', function () {
-    return view('connecxion');
-}); */
 
 Route::get('/inscription', function () {
     return view('inscription');
-});
+}); */
 
 Route::get('/admin', function () {
     return view('admin');
@@ -54,7 +54,7 @@ Route::get('/admin', function () {
 
 
 
-Route::get("/connexion",[postcontroller::class,"inscription"]);
+Route::post("/connexion",[postcontroller::class,"connexion"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
 
 Route::get("/user",[postcontroller::class,"user"]);
