@@ -22,7 +22,7 @@ class PostController extends Controller
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
-       return view('archive',['users' => $users]);
+       return view('admin',['users' => $users]);
 
         //return view('admin',['user' => $user]);
     }

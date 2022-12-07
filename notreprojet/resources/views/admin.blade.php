@@ -48,10 +48,10 @@
 
                             <input class="form-control me-2" name="prenom" type="text" placeholder="Rechercher..."
                                 aria-label="Search">
-                            <button class="btn btn-outline-secondary" type="submit">Recherche</button>
+                            <button class="btn btn-outline-secondary text-dark" type="submit">Recherche</button>
                         </form>
                     </div>
-
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="connexion.php" class="mt-1"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:40px;"></i></a>
 
@@ -89,6 +89,7 @@
                                 <td class= "border border-4 border-dark">
                                     <span style="display:flex; justify-content:space-between;font-size:30px;">
                                   <a  title="modifer" onclick= "return confirm('\'voulez vous vraiment modifier?')" href="post/editForm/{{$user->id}}"><i class="bi bi-pencil-square text-dark "></i></a>
+                                  &nbsp;
                                     <a onclick= "return confirm(\'voulez vous vraiment archiver?\')" href=""><i class="bi bi-archive-fill text-dark"></i></a>
                                     <a href=""></a>
                                     <form class="d-flex " action="/api/post/switchRole/{{$user->id}}" method="post">
