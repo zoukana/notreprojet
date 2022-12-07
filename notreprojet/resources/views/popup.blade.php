@@ -23,18 +23,18 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Inscription reussi </h5>
+             <div><h5 class="modal-title" style="color: green; margin-left:140px;">Inscription reussi </h5></div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="display: flex;justify-content:center;">
              Voulez-vous rester sur cette page ou vous cnnecter
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">  <a href="/post" data-dismiss="modal">oui</a></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">  <a href="/post" data-dismiss="modal">OUI</a></button>
 
-                <button type="button" class="btn btn-primary" data-dismiss="modal">   <a href="/">non</a> </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">   <a href="/">NON</a></button>
 
 
           </div>

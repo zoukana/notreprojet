@@ -24,8 +24,8 @@ Route::get('/post', function () {
 
 /*  Route::get('/modal', function () {
     return view('popup');
-}); */
-
+});
+ */
 Route::get('/', function () {
     return view('connexion');
 });

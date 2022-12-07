@@ -83,13 +83,13 @@ class postcontroller extends Controller
         return view("popup");
 
     }
-    
+
 protected function connexion(Request $request){
     $u = new assane();
     $u = $request->validate([
         'password' => ['required'],
         'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
-       
+
 
 
     ]);
@@ -103,7 +103,7 @@ protected function connexion(Request $request){
 
    return redirect('/');
 
-} 
+}
 
 
 
@@ -112,7 +112,6 @@ protected function connexion(Request $request){
 
 
 
-} 
 
 
-   
+
