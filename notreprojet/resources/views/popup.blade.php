@@ -32,9 +32,9 @@
              Voulez-vous connecter
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">  <a href="/post" data-dismiss="modal">OUI</a></button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">  <a href="/" data-dismiss="modal">OUI</a></button>
 
-                <button type="button" class="btn btn-dark" data-dismiss="modal">   <a href="/">NON</a></button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">   <a href="/post">NON</a></button>
 
 
           </div>
