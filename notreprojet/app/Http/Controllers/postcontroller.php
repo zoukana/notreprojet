@@ -102,8 +102,7 @@ class postcontroller extends Controller
                     return redirect('/api/post');
                 } else
                  {
-                    return 'user';
-
+                    return redirect('/api/user');
                 }
 
 
