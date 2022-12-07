@@ -33,7 +33,7 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-                        <img src="/image/lucifer.JPG" class="rounded-circle" height="80" width="80" alt="">
+                        <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
                         matricule
                     </span>
 
