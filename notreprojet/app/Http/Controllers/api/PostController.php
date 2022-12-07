@@ -27,6 +27,18 @@ class PostController extends Controller
         //return view('admin',['user' => $user]);
     }
 
+    public function userSimple()
+    {
+        $users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('user',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
     public function user()
     {
         //$users = assane::all();
