@@ -7,7 +7,21 @@ use Illuminate\Http\Request;
 
 class postcontroller extends Controller
 {
-    
+
+    function generateMatricule($n = 3)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+
+        for ($i = 0; $i < $n; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $randomString .= $characters[$index];
+        }
+
+        return '2022-' . $randomString;
+    }
+
+
     //controle du formulaire
 
     public function inscription(Request $request){
@@ -45,8 +59,9 @@ class postcontroller extends Controller
      }
 
 
-
             $res = new assane();
+
+            $res->matricule = $this->generateMatricule();
             $res->prenom=$request->get('prenom');
             $res->nom=$request->get('nom');
             $res->email=$request->get('email');
@@ -56,23 +71,14 @@ class postcontroller extends Controller
             $res->date_inscription=date('y-m-d');
             $res->date_modification=null;
             $res->date_archivage=null;
-            $res->photo=$request->get('photo');
+            $res->photo=null;
              $res->save();
-/*             dd($res->save());
- *//*             dd($res->save());
- */
-        return $validation;
+
+
 
 
     }
-   /*  $request->session()->flash('enregistrement valide')
-    return to_route('post.create'); */
-/*   public function _construct()
 
-    {
-        $this->middleware('guest')->except('logout');
-    }
-    protected function redirectTo() */
 
 
 }
