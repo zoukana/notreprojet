@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\assane;
 use Illuminate\Http\Request;
+use Hash;
+use App\Roles;
+use Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class postcontroller extends Controller
 {
+
 
     function generateMatricule($n = 3)
     {
@@ -67,12 +75,35 @@ class postcontroller extends Controller
             $res->email=$request->get('email');
             $res->password=$request->get('password');
             $res->role=$request->get('role');
-            $res->etat=1;
             $res->date_inscription=date('y-m-d');
             $res->date_modification=null;
             $res->date_archivage=null;
             $res->photo=null;
              $res->save();
+
+
+    }
+    
+protected function connexion(Request $request){
+    $u = new assane();
+    $u = $request->validate([
+        'password' => ['required'],
+        'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
+       
+
+
+    ]);
+    //redirection
+   $users = assane::all();
+   foreach($users as $user) {
+    if ($user->email == $request->get("email") && $user->password == $request->get("password")){
+        return redirect('/api/post');
+    }
+   }
+
+   return redirect('/');
+
+} 
 
 
 
@@ -81,5 +112,7 @@ class postcontroller extends Controller
 
 
 
-}
+} 
 
+
+   
