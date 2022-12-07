@@ -34,7 +34,6 @@ class postcontroller extends Controller
 
     public function inscription(Request $request){
         $u = new assane();
-     /*    dd($u::all()); */
 
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');
