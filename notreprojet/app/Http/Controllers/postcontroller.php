@@ -18,7 +18,7 @@ class postcontroller extends Controller
             $randomString .= $characters[$index];
         }
 
-        return '2022-' . $randomString;
+        return 'simplon_2022-' . $randomString;
     }
 
 
