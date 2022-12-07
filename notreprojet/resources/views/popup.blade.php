@@ -29,10 +29,10 @@
                 </button>
             </div>
             <div class="modal-body" style="display: flex;justify-content:center;">
-             Voulez-vous rester sur cette page ou vous cnnecter
+             Voulez-vous connecter
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">  <a href="/post" data-dismiss="modal">OUI</a></button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">  <a href="/post" data-dismiss="modal">OUI</a></button>
 
                 <button type="button" class="btn btn-dark" data-dismiss="modal">   <a href="/">NON</a></button>
 
