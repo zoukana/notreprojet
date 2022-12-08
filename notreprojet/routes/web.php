@@ -21,11 +21,10 @@ Route::get('/', function () {
 Route::get('/post', function () {
     return view('inscription');
 });
-
-/*  Route::get('/modal', function () {
+Route::get('/modal', function () {
     return view('popup');
 });
- */
+
 Route::get('/', function () {
     return view('connexion');
 });
