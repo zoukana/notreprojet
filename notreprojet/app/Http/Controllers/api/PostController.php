@@ -133,6 +133,7 @@ class PostController extends Controller
         $user->nom=$request->get("nom");
         $user->prenom=$request->get("prenom");
         $user->email=$request->get("email");
+        $user->date_modification = date('y-m-d');
         $user->save();
         return redirect("/api/post");
     }
@@ -174,5 +175,5 @@ class PostController extends Controller
 
         return view("admin" ,["users"=>$users]);
     }
-    
+
 }
