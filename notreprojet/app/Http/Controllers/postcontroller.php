@@ -57,6 +57,7 @@ class postcontroller extends Controller
 
         ]);
 
+          //insertion image
         $name = $request->file('file')->getClientOriginalName();
 
         $path = $request->file('file')->store('public/image');
@@ -74,7 +75,7 @@ class postcontroller extends Controller
             }
         }
 
-        //insertion image
+
 
 
 
