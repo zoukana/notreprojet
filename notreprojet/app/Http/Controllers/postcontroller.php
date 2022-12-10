@@ -90,7 +90,7 @@ class postcontroller extends Controller
         $res->date_modification = null;
         $res->date_archivage = null;
         $res->name = $name;
-        $res->path = $path;
+        $res->photo = $path;
         $res->etat = 1;
         $res->save();
 
