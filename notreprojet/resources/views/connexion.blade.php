@@ -2,7 +2,7 @@
 @section('content')
 
 
-    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:100px; border-radius:10px;background-color:#D9D9D9; width:50%;">
+    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:200px; border-radius:10px;background-color:#D9D9D9; width:40%;">
     <form action="/connexion" method="POST" class="container" >
         @csrf
         <div style="margin-left:20px;">

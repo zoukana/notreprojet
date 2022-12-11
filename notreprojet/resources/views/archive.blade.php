@@ -44,15 +44,15 @@
                     </span>
 
                     <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
-                        <form class="d-flex" action="" method="get" role="search">
-                            <input class="form-control me-2" name="search" type="search" placeholder="Recherche"
+                        <form class="d-flex" action="Search" method="GET" role="search">
+                            <input class="form-control me-2" name="nom" type="search" placeholder="Recherche"
                                 aria-label="Search">
                             <button class="btn btn-outline-secondary text-dark" type="submit">Search</button>
                         </form>
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                    <a href="/api/userArchive" class="mt-1"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:40px;"></i></a>
 
                 </span>
@@ -93,14 +93,12 @@
 
                                     <span style="display:flex; :space-between;font-size:30px;">
 
-                                    <a onclick= "return confirm(\'voulez vous vraiment desarchiver?\')" href="desarchiver.php?matricule=' . $a['matricule'] . '">
+                                    <a onclick= "return confirm(\'voulez vous vraiment désarchiver?')" href="/api/userArchive{{$user->id}}?matricule=' . $a['matricule'] . '">
                                     <i class="bi bi-archive text-dark"></i>
 
                                     </span>
 
                                         </td>
-
-
 
                                 </tr>
 
@@ -111,7 +109,9 @@
                 </table>
 
             </div>
-
+            <div class="d-flex justify-content-center col-">
+                {{ $users->links()}}
+            </div>
         </div>
 </body>
 

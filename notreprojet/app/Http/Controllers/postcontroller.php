@@ -83,7 +83,6 @@ class postcontroller extends Controller
         return view("popup");
 
     }
-
     protected function connexion(Request $request)
     {
         $u = new assane();
@@ -91,22 +90,18 @@ class postcontroller extends Controller
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
+        ]);
+        //redirection
+        $users = assane::all();
+        foreach($users as $user) {
+            if ($user->email == $request->get("email") && $user->password == $request->get("password")){
+                if($user->role === 'administrateur'){ return redirect('/api/post');}
+                elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
 
 
-
-    ]);
-    //redirection
-   $users = assane::all();
-   foreach($users as $user) {
-    if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-        if($user->role === 'administrateur'){ return redirect('/api/post');}
-        elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
-
-
-   }
-}
-
-$validation = $request->validate([
+            }
+        }
+        $validation = $request->validate([
 
         ]);
         //redirection
@@ -115,27 +110,30 @@ $validation = $request->validate([
             if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
                 if ($user->role === 'administrateur') {
                     return redirect('/api/post');
-                } else
-                 {
+                } 
+                else{
+                 
                     return redirect('/api/user');
                 }
-
-
-
             }
-
         }
-
         $validation = $request->validate([
             'email' => ['accepted'],
 
         ]);
 
-
-}
-
-
     }
+
+    public function ARCHIVER(Request $request){
+        $u = new assane();
+        $users = assane::all();
+        foreach($users as $user) {
+           /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
+                if($user->etat === 0){ return redirect('/api/archive');}
+            }
+       /*  } */
+    }
+}
 
 
 
