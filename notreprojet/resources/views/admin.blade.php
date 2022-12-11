@@ -24,6 +24,7 @@
 <!-- style="background-color:rgba(156, 156, 163, 1)" -->
 
 <body style="background-color:rgba(156, 156, 163, 1)">
+    @csrf
     <a href="admin.php"><span class="material-symbols-outlined">
             keyboard_return
         </span></a>
@@ -34,7 +35,7 @@
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
                         <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
-                        matricule
+                       matricule
                     </span>
 
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">

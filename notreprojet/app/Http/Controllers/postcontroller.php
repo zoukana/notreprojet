@@ -99,7 +99,11 @@ class postcontroller extends Controller
    $users = assane::all();
    foreach($users as $user) {
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-        if($user->role === 'administrateur'){ return redirect('/api/post');}
+
+                //dd(session('matricule'));
+        if($user->role === 'administrateur'){
+            return redirect('/api/post');
+        }
         elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
 
 
