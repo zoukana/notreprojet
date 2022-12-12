@@ -183,6 +183,7 @@ class PostController extends Controller
         $user->nom=$request->get("nom");
         $user->prenom=$request->get("prenom");
         $user->email=$request->get("email");
+        $user->date_modification = date('y-m-d');
         $user->save();
         return redirect("/api/post");
     }
@@ -223,6 +224,7 @@ class PostController extends Controller
         $users = assane::where('prenom', $request->get('prenom'))->get();
 
         return view("admin" ,["users"=>$users]);
+
     } */
     
     public function chercheUser(Request $request)
@@ -262,5 +264,8 @@ class PostController extends Controller
        $user->save();
        return redirect("/api/listearchive");
    }
+
+    }
+
 
 }

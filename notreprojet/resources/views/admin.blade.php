@@ -33,7 +33,7 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-                        <img src="/image/lucifer.JPG" class="rounded-circle" height="80" width="80" alt="">
+                        <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
                         matricule
                     </span>
 
@@ -53,7 +53,7 @@
                         </form>
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="connexion.php" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                    <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:40px;"></i></a>
 
                 </span>
