@@ -1,4 +1,4 @@
-@extends('layouts.commun')
+ @extends('layouts.commun')
 @section('content')
 
 
@@ -34,4 +34,4 @@
     </form>
 
 </div>
-@endsection
+

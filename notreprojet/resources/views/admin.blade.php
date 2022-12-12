@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,10 +22,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<!-- background-color:RGB(51, 21, 15) -->
-<!-- style="background-color:rgba(156, 156, 163, 1)" -->
 
 <body style="background-color:rgba(156, 156, 163, 1)">
+    @csrf
     <a href="admin.php"><span class="material-symbols-outlined">
             keyboard_return
         </span></a>
@@ -34,6 +35,8 @@
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
                         <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
+                       matricule
+                    </span>
                       matricule
 {{--                       <h2>{{$utilisateur->email}}</h2>
  --}}                    </span>
@@ -41,6 +44,7 @@
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
                        nom prenom
                         <span style="margin-left: 4rem">
+
                             <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
                         </span>
                     </span>

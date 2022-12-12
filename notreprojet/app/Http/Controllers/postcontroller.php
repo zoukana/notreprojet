@@ -57,10 +57,10 @@ class postcontroller extends Controller
 
         ]);
 
-          //insertion image
-        $name = $request->file('file')->getClientOriginalName();
+        //insertion image
+     /*  $name = $request->file('file')->getClientOriginalName();
 
-        $path = $request->file('file')->store('public/image');
+        $path = $request->file('file')->store('public/image'); */
 
 
         //controle du mail existant
@@ -75,10 +75,6 @@ class postcontroller extends Controller
             }
         }
 
-
-
-
-
         $res = new assane();
 
         $res->matricule = $this->generateMatricule();
@@ -90,13 +86,14 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
-        $res->name = $name;
-        $res->photo = $path;
+     /*    $res->name = $name;
+        $res->photo = $path; */
         $res->etat = 1;
         $res->save();
 
         return view("popup");
     }
+
     protected function connexion(Request $request)
     {
         $u = new assane();
@@ -104,41 +101,63 @@ class postcontroller extends Controller
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
+
+
+    ]);
+    //redirection
+   $users = assane::all();
+   foreach($users as $user) {
+    if ($user->email == $request->get("email") && $user->password == $request->get("password")){
+
+                //dd(session('matricule'));
+        if($user->role === 'administrateur'){
+            return redirect('/api/post');
+        }
+        elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
+
+
+   }
+}
+
+$validation = $request->validate([
+
         ]);
         //redirection
         $users = assane::all();
-        foreach($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-                if($user->role === 'administrateur'){ return redirect('/api/post');}
-                elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
+        foreach ($users as $user) {
+            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
+                if ($user->role === 'administrateur') {
+                    return redirect('/api/post');
+                } elseif ($user->role === 'user_simple') {
+                    return redirect('/api/userSimple');
+                }
 
 
 
             }
         }
-       
+
+
         $validation = $request->validate([
             'msg' => ['accepted'],
 
         ]);
 
 
+
     }
 
-    public function ARCHIVER(Request $request){
+
+    public function ARCHIVER(Request $request)
+    {
         $u = new assane();
         $users = assane::all();
-        foreach($users as $user) {
-           /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
-                if($user->etati === 0){ return redirect('/api/archive');}
+        foreach ($users as $user) {
+            /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
+            if ($user->etat === 0) {
+                return redirect('/api/archive');
             }
-       /*  } */
+        }
+
+        }
     }
-  
-
-}
-
-
-    
-
-
