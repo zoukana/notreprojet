@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +33,9 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-                        <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
-                        <span>{{$_SESSION['matricule']}}</span>                    </span>
+                        <img src="storage/app/public/image,<?= base64_encode($_SESSION['photo'])?>"  class="rounded-circle" height="80" width="80" alt="{{$_SESSION['photo']}}">
+                        <span>{{$_SESSION['matricule']}}</span>
+                     </span>
 
 
                       <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
