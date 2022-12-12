@@ -118,7 +118,7 @@ class postcontroller extends Controller
             }
         }
         $validation = $request->validate([
-            'email' => ['accepted'],
+            'msg' => ['accepted'],
 
         ]);
 
