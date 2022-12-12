@@ -5,7 +5,8 @@
   <form action="/inscription" method="POST" class="row g-3" style="background-color:#D9D9D9" id="loginform" enctype="multipart/form-data">
     @csrf
     <div>
-      <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
+
+      <h2 class="text-center bg-primary ">FORMULAIRE D'INSCRIPTION</h2>
     </div>
 
     <div>
@@ -37,9 +38,9 @@
     <div class="col-md-6">
       <label for="inputState" class="form-label">role</label>
       <select id="role" name="role" class="form-select @error('nom') is-invalid @enderror">
-        <option   selected></option>
-        <option     name="role">administrateur</option>
-        <option  name="role">user_simple</option>
+        <option selected></option>
+        <option name="role">administrateur</option>
+        <option name="role">user_simple</option>
       </select>
       @error('role')
       <div class="text-danger">{{ $message }}</div>
@@ -60,12 +61,14 @@
     @enderror
     </div>
     <div class="col-auto">
-      <input type="file" class="form-control" id="photo" name="photo" placeholder="PHOTO" accept=".jpeg, .png, .jpj">
+      <input type="file" class="form-control" id="file" name="file" id="file"  placeholder="PHOTO" accept=".jpeg, .png, .jpj">
     </div>
     <br>
     <div class="col-6">
-      <input type="submit" id="submit" name="submit"  class="btn btn-primary" style="background-color:#05006B">
-    </div>
-  </form>
+      <input type="submit" id="submit" name="submit" class="btn btn-primary" style="background-color:#05006B">
+
+</div>
+</form>
+
 
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StoreImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postcontroller;
 
@@ -21,20 +22,23 @@ Route::get('/', function () {
 Route::get('/post', function () {
     return view('inscription');
 });
+Route::get('/modal', function () {
+    return view('popup');
+});
 
 
 Route::get('/', function () {
     return view('connexion');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
+
+
+
+Route::get('/archive', function () {
+    return view('archive');
 });
 
 
-/*  Route::get('/connecxion', function () {
-    return view('connecxion');
-}); */
 
 Route::get('/inscription', function () {
     return view('inscription');
@@ -44,19 +48,34 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/user', function () {
+    return view('user');
+});
+/*
+Route::get('/archive', function () {
+    return view('archive');
+}); */
 
 
-Route::get("/connexion",[postcontroller::class,"inscription"]);
+
+Route::post("/connexion",[postcontroller::class,"connexion"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
+
+Route::get("/user",[postcontroller::class,"user"]);
 
 Route::get('/modification', function () {
     return view('modification');
 });
 
 
+Route::get('/{email}', [postcontroller::class, 'voir']);
 
-Route::get('/admin', 'postController@index')->name('admin')->middleware('admin');
-Route::get('/user', 'postController@index')->name('user')->middleware('user');
+Route::get("/ARCHIVER",[postcontroller::class,"ARCHIVER"]);
+
+
+Route::get('/archive', function () {
+    return view('archive');
+});
 
 
 
@@ -74,13 +93,5 @@ Route::get('/user', 'postController@index')->name('user')->middleware('user');
 
 
 
-//For adding an image
-Route::get('/add_image',[ImageUploadController::class,'addImage'])->name('images.add');
 
-//For storing an image
-Route::post('/store-image',[ImageUploadController::class,'storeImage'])
-->name('images.store');
-
-//For showing an image
-Route::get('/view_image',[ImageUploadController::class,'viewImage'])->name('images.view');
 

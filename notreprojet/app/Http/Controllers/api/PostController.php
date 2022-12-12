@@ -1,12 +1,13 @@
 <?php
-
 namespace App\Http\Controllers\api;
-
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\assane;
 use PhpParser\Node\Expr\Cast\String_;
+use Illuminate\Pagination\Paginator;
+
+
 
 class PostController extends Controller
 {
@@ -17,18 +18,88 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-      $users = assane::all();
-        $users = assane::paginate(5);
+
+        $users = assane::where("etat", '=', 1)->paginate(5);
 
        return view('admin',['users' => $users]);
+    }
+
+    public function userSimple()
+    {
+        $users = assane::all();
+        $users = assane::where("etat", '=', 0)->paginate(5);
+        //dd($user->links());
+       return view('user',['users' => $users]);
+
+    }
+
+
+    public function autocompleteSearch(Request $request)
+    {
+        $users = assane::all();
+
+        $search = \Request::get('nom');
+
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+
+            return view("user" ,["users"=>$users]);
+
+    }
+
+    public function userArchive()
+    {
+        $users = assane::all();
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
         //return view('admin',['user' => $user]);
     }
 
-    // app > http > controllers > EmployeeController.php
+    public function Search(Request $request)
+    {
+
+
+        $users = assane::all();
+
+        $search = \Request::get('nom');
+
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+
+            return view("archive" ,["users"=>$users]);
+
+    }
+
+    public function user()
+    {
+
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('user',['users' => $users]);
+
+
+    }
+
+    public function archive()
+    {
+
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
+    }
+
+
 
     public function getData(){
-      //$user = assane::paginate(5);
-      //return view('admin',['users' => $users])
+
+
     }
 
 
@@ -56,13 +127,13 @@ class PostController extends Controller
     public function switchRole(string $id)
     {
         $user = assane::findOrFail($id);
-        if($user->role === "admin")
+        if($user->role === "administrateur")
         {
-            $user->role = "user";
+            $user->role = "user_simple";
         }
         else
         {
-            $user->role = "admin";
+            $user->role = "administrateur";
         }
         $user->save();
         return redirect("/api/post");
@@ -86,11 +157,18 @@ class PostController extends Controller
      */
     public function edit(string $id , Request $request)
     {
+        $u = new assane();
+        $validation = $request->validate([
+            'nom' => ['required'],
+            'prenom' => ['required'],
+            'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
+        ]);
         $user = assane::findOrFail($id);
         $user->nom=$request->get("nom");
         $user->prenom=$request->get("prenom");
         $user->email=$request->get("email");
+        $user->date_modification = date('y-m-d');
         $user->save();
         return redirect("/api/post");
     }
@@ -125,8 +203,37 @@ class PostController extends Controller
 
     public function chercheUser(Request $request)
     {
-        $users = assane::where('prenom', $request->get('prenom'))->get();
 
-        return view("admin" ,["users"=>$users]);
+        $users = assane::all();
+
+        $search = \Request::get('nom');
+
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+
+            return view("admin" ,["users"=>$users]);
+
     }
-}
+
+
+
+    public function Archiv(string $id)
+   {
+       $users = assane::findOrFail($id);
+       $users->etat = 0;
+       $users->save();
+       return redirect("api/post");
+   }
+
+   public function Desarchiv(string $id)
+   {
+       $user =  assane::findOrFail($id);
+
+       $user->etat = 1;
+
+       $user->save();
+       return redirect("/api/userArchive");
+   }
+
+    }
