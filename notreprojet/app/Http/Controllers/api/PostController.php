@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\assane;
 use PhpParser\Node\Expr\Cast\String_;
 use Illuminate\Pagination\Paginator;
+
+
+
 class PostController extends Controller
 {
     /**
@@ -38,6 +41,53 @@ class PostController extends Controller
 
         //return view('admin',['user' => $user]);
     }
+
+
+    public function autocompleteSearch(Request $request)
+    { 
+        $users = assane::all();
+
+        $search = \Request::get('nom');  
+    
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+    
+            return view("user" ,["users"=>$users]);
+
+    } 
+
+    public function userArchive()
+    {
+        $users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
+    public function Search(Request $request)
+    {
+        /* $words='%'. $this->$query.'%';
+        if(strlen($this->query)<2){
+           $this->$users=user::where('nom', 'LIKE',$words)
+            ->get();
+        } */
+
+        $users = assane::all();
+
+        $search = \Request::get('nom');  
+    
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+    
+            return view("archive" ,["users"=>$users]);
+
+    } 
 
     public function user()
     {
@@ -166,7 +216,7 @@ class PostController extends Controller
         //
     }
 
-    public function chercheUser(Request $request)
+   /*  public function chercheUser(Request $request)
     {
         $users = assane::all();
         $users = assane::paginate();
@@ -174,6 +224,48 @@ class PostController extends Controller
         $users = assane::where('prenom', $request->get('prenom'))->get();
 
         return view("admin" ,["users"=>$users]);
+
+    } */
+    
+    public function chercheUser(Request $request)
+    {
+        /* $words='%'. $this->$query.'%';
+        if(strlen($this->query)<2){
+           $this->$users=user::where('nom', 'LIKE',$words)
+            ->get();
+        } */
+
+        $users = assane::all();
+
+        $search = \Request::get('nom');  
+    
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+    
+            return view("admin" ,["users"=>$users]);
+
+    } 
+
+   
+
+    public function Archiv(string $id)
+   {
+       $users = assane::findOrFail($id);
+       $users->etat = "0";
+       $users->save();
+       return redirect("api/post");
+   }
+ 
+   public function Desarchiv(string $id)
+   {
+       $user =  Utilisateur::findOrFail($id);
+       $user->etat =  "1";
+       $user->save();
+       return redirect("/api/listearchive");
+   }
+
     }
+
 
 }
