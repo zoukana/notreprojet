@@ -33,13 +33,10 @@ class PostController extends Controller
     public function userSimple()
     {
         $users = assane::all();
-
-        /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
-        //return view('admin',['user' => $user]);
     }
 
 
@@ -60,8 +57,6 @@ class PostController extends Controller
     public function userArchive()
     {
         $users = assane::all();
-
-        /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
        return view('archive',['users' => $users]);
@@ -87,9 +82,6 @@ class PostController extends Controller
 
     public function user()
     {
-        
-
-        /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
@@ -99,7 +91,7 @@ class PostController extends Controller
 
     public function archive()
     {
-        //$users = assane::all();
+       
 
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
@@ -108,12 +100,11 @@ class PostController extends Controller
 
     }
 
-    // app > http > controllers > EmployeeController.php
+ 
 
     public function getData(){
 
-      //$user = assane::paginate(5);
-      //return view('admin',['users' => $users])
+     
     }
 
 
@@ -209,16 +200,6 @@ class PostController extends Controller
         //
     }
 
-   /*  public function chercheUser(Request $request)
-    {
-        $users = assane::all();
-        $users = assane::paginate();
-        $users = assane::where('prenom', $request->get('prenom'))->get()->paginate();
-        $users = assane::where('prenom', $request->get('prenom'))->get();
-
-        return view("admin" ,["users"=>$users]);
-
-    } */
     
     public function chercheUser(Request $request)
     {
