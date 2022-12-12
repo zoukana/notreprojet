@@ -98,3 +98,4 @@ Route::post('/store-image',[ImageUploadController::class,'storeImage'])
 //For showing an image
 Route::get('/view_image',[ImageUploadController::class,'viewImage'])->name('images.view');
 
+

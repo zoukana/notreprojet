@@ -111,7 +111,9 @@
                 </table>
 
             </div>
-
+            <div class="d-flex justify-content-center col-">
+                {{ $users->links() }}
+            </div>
         </div>
 </body>
 
