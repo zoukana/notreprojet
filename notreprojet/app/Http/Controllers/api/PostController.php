@@ -18,10 +18,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = assane::all();
-
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
@@ -209,7 +208,6 @@ class PostController extends Controller
         //
     }
 
-
     public function chercheUser(Request $request)
     {
 
@@ -246,6 +244,5 @@ class PostController extends Controller
    }
 
     }
-
 
 
