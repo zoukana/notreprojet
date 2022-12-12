@@ -6,7 +6,8 @@
     @csrf
     <div>
       <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
-    </div>
+{{--       <h2>{{$utilisateur->email}}</h2>
+ --}}    </div>
 
     <div>
     </div>
