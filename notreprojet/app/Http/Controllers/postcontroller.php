@@ -111,6 +111,11 @@ class postcontroller extends Controller
 
                 //dd(session('matricule'));
         if($user->role === 'administrateur'){
+            Session_start();
+            $_SESSION['nom'] = $user->nom;
+            $_SESSION['prenom'] = $user->prenom;
+            $_SESSION['matricule'] = $user->matricule;
+
             return redirect('/api/post');
         }
         elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
