@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\assane;
 use PhpParser\Node\Expr\Cast\String_;
 use Illuminate\Pagination\Paginator;
+
+
+
 class PostController extends Controller
 {
     /**
@@ -38,16 +41,59 @@ class PostController extends Controller
         //return view('admin',['user' => $user]);
     }
 
+
+    public function autocompleteSearch(Request $request)
+    { 
+        $users = assane::all();
+
+        $search = \Request::get('nom');  
+    
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+    
+            return view("user" ,["users"=>$users]);
+
+    } 
+
+    public function userArchive()
+    {
+        $users = assane::all();
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
+        //return view('admin',['user' => $user]);
+    }
+
+    public function Search(Request $request)
+    {
+        
+
+        $users = assane::all();
+
+        $search = \Request::get('nom');  
+    
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+    
+            return view("archive" ,["users"=>$users]);
+
+    } 
+
     public function user()
     {
-        //$users = assane::all();
+        
 
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
-        //return view('admin',['user' => $user]);
+        
     }
 
     public function archive()
@@ -59,9 +105,6 @@ class PostController extends Controller
         //dd($user->links());
        return view('archive',['users' => $users]);
 
-        //return view('admin',['user' => $user]);
-        //$users = DB::statement('assane')->orderBy('id','desc')->paginate(5);
-        //return view('admin',compact('users'));
     }
 
     // app > http > controllers > EmployeeController.php
@@ -132,6 +175,7 @@ class PostController extends Controller
         $user->nom=$request->get("nom");
         $user->prenom=$request->get("prenom");
         $user->email=$request->get("email");
+        $user->date_modification = date('y-m-d');
         $user->save();
         return redirect("/api/post");
     }
@@ -164,7 +208,7 @@ class PostController extends Controller
         //
     }
 
-    public function chercheUser(Request $request)
+   /*  public function chercheUser(Request $request)
     {
         $users = assane::all();
         $users = assane::paginate();
@@ -175,3 +219,42 @@ class PostController extends Controller
     }
 
 }
+
+    } */
+    
+    public function chercheUser(Request $request)
+    {
+
+        $users = assane::all();
+
+        $search = \Request::get('nom');  
+    
+        $users = assane::where('nom','like','%'.$search.'%')
+            ->orderBy('nom')
+            ->paginate(5);
+    
+            return view("admin" ,["users"=>$users]);
+
+    } 
+
+   
+
+    public function Archiv(string $id)
+   {
+       $users = assane::findOrFail($id);
+       $users->etat = 0;
+       $users->save();
+       return redirect("api/post");
+   }
+ 
+   public function Desarchiv(string $id)
+   {
+       $user =  assane::findOrFail($id);
+       $user->etat = 1;
+       $user->save();
+       return redirect("/api/userArchive");
+   }
+
+    }
+
+
