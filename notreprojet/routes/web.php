@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StoreImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postcontroller;
 
@@ -21,18 +22,15 @@ Route::get('/', function () {
 Route::get('/post', function () {
     return view('inscription');
 });
-
-/*  Route::get('/modal', function () {
+Route::get('/modal', function () {
     return view('popup');
 });
- */
+
+
 Route::get('/', function () {
     return view('connexion');
 });
 
-/* Route::get('/admin', function () {
-    return view('admin');
-});
 
 
 
@@ -44,7 +42,7 @@ Route::get('/archive', function () {
 
 Route::get('/inscription', function () {
     return view('inscription');
-}); */
+});
 
 Route::get('/admin', function () {
     return view('admin');
@@ -66,7 +64,10 @@ Route::get('/modification', function () {
 });
 
 
+Route::get('/{email}', [postcontroller::class, 'voir']);
+
 Route::get("/ARCHIVER",[postcontroller::class,"ARCHIVER"]);
+
 
 Route::get('/archive', function () {
     return view('archive');
@@ -88,13 +89,4 @@ Route::get('/archive', function () {
 
 
 
-//For adding an image
-Route::get('/add_image',[ImageUploadController::class,'addImage'])->name('images.add');
-
-//For storing an image
-Route::post('/store-image',[ImageUploadController::class,'storeImage'])
-->name('images.store');
-
-//For showing an image
-Route::get('/view_image',[ImageUploadController::class,'viewImage'])->name('images.view');
 

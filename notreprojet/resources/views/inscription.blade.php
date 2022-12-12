@@ -6,7 +6,8 @@
     @csrf
     <div>
       <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
-    </div>
+{{--       <h2>{{$utilisateur->email}}</h2>
+ --}}    </div>
 
     <div>
     </div>
@@ -60,7 +61,7 @@
     @enderror
     </div>
     <div class="col-auto">
-      <input type="file" class="form-control" id="photo" name="photo" placeholder="PHOTO" accept=".jpeg, .png, .jpj">
+      <input type="file" class="form-control" id="file" name="file" id="photo"  placeholder="PHOTO" accept=".jpeg, .png, .jpj">
     </div>
     <br>
     <div class="col-6">
