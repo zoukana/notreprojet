@@ -63,8 +63,15 @@ Route::get('/modification', function () {
     return view('modification');
 });
 
+
 Route::get('/{email}', [postcontroller::class, 'voir']);
 
+Route::get("/ARCHIVER",[postcontroller::class,"ARCHIVER"]);
+
+
+Route::get('/archive', function () {
+    return view('archive');
+});
 
 
 

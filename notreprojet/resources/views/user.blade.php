@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,8 +45,8 @@
                     </span>
 
                     <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
-                        <form class="d-flex" action="" method="get" role="search">
-                            <input class="form-control me-2" name="search" type="search" placeholder="Recherche"
+                        <form class="d-flex" action="autocompleteSearch" method="GET" role="search">
+                            <input class="form-control me-2" name="nom" type="search" placeholder="Recherche"
                                 aria-label="Search">
                             <button class="btn btn-outline-secondary text-dark" type="submit">Search</button>
                         </form>
@@ -92,7 +93,9 @@
                 </table>
 
             </div>
-
+            <div class="d-flex justify-content-center col-">
+                {{ $users->links()}}
+            </div>
         </div>
 </body>
 

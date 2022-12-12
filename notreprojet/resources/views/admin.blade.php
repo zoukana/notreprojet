@@ -41,14 +41,14 @@
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
                        nom prenom
                         <span style="margin-left: 4rem">
-                            <h4><a href="('archive')" class="text-white">liste des archives</a> </h4>
+                            <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
                         </span>
                     </span>
 
                     <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
-                        <form class="d-flex" action="chercheUser" method="POST" role="search">
+                        <form class="d-flex" action="chercheUser" method="GET" role="search">
 
-                            <input class="form-control me-2" name="prenom" type="text" placeholder="Rechercher..."
+                            <input class="form-control me-2" name="nom" type="text" placeholder="Rechercher..."
                                 aria-label="Search">
                             <button class="btn btn-outline-secondary text-dark" type="submit">Recherche</button>
                         </form>
@@ -78,8 +78,6 @@
                     <tbody class="text-center">
                         @foreach ( $users as $user )
                         <tr>
-
-
                             <tr  scope="row">
                                 <td class="border border-4 border-dark">{{{$user->nom}}}</td>
                                 <td class="border border-4 border-dark">{{{$user->prenom}}}</td>
@@ -92,15 +90,13 @@
                                     <span style="display:flex; justify-content:space-between;font-size:30px;">
                                   <a  title="modifer" onclick= "return confirm('\'voulez vous vraiment modifier?')" href="post/editForm/{{$user->id}}"><i class="bi bi-pencil-square text-dark "></i></a>
                                   &nbsp;
-                                    <a onclick= "return confirm(\'voulez vous vraiment archiver?\')" href=""><i class="bi bi-archive-fill text-dark"></i></a>
+                                    <a title="archiver"  onclick= "return confirm(\'voulez vous vraiment archiver?')" href="/api/Archiv/{{$user->id}}"><i class="bi bi-archive-fill text-dark"></i></a>
                                     <a href=""></a>
                                     <form class="d-flex " action="/api/post/switchRole/{{$user->id}}" method="post">
                                         <div class="form-group"><button type="submit"><i class="bi bi-arrow-repeat text-dark"></i></button></div>
                                     </form>
 
                                     </span>
-
-
                                     </td>
                                 </tr>
                         </tr>
