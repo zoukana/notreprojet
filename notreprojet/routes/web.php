@@ -51,6 +51,10 @@ Route::get('/admin', function () {
 Route::get('/user', function () {
     return view('user');
 });
+/*
+Route::get('/archive', function () {
+    return view('archive');
+}); */
 
 
 
@@ -86,6 +90,7 @@ Route::get('/archive', function () {
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 

@@ -104,6 +104,26 @@ class postcontroller extends Controller
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
+
+
+    ]);
+    //redirection
+   $users = assane::all();
+   foreach($users as $user) {
+    if ($user->email == $request->get("email") && $user->password == $request->get("password")){
+
+                //dd(session('matricule'));
+        if($user->role === 'administrateur'){
+            return redirect('/api/post');
+        }
+        elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
+
+
+   }
+}
+
+$validation = $request->validate([
+
         ]);
         //redirection
         $users = assane::all();
