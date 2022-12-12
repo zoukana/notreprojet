@@ -15,13 +15,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$users = assane::all();
-
-        /*return response ()->json($user);*/
+      $users = assane::all();
         $users = assane::paginate(5);
-        //dd($user->links());
+
        return view('admin',['users' => $users]);
         //return view('admin',['user' => $user]);
     }
@@ -128,7 +126,7 @@ class PostController extends Controller
     public function chercheUser(Request $request)
     {
         $users = assane::where('prenom', $request->get('prenom'))->get();
-        
+
         return view("admin" ,["users"=>$users]);
     }
 }
