@@ -1,9 +1,12 @@
-@extends('layouts.commun')
+ @extends('layouts.commun')
 @section('content')
 
 
-    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:100px; border-radius:10px;background-color:#D9D9D9; width:50%;">
+    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:200px; border-radius:10px;background-color:#D9D9D9; width:40%;">
     <form action="/connexion" method="POST" class="container" >
+        @error('msg')
+        <div class="text-danger alert alert-danger text-center">{{ $message }}</div>
+      @enderror
         @csrf
         <div style="margin-left:20px;">
             <h2 class="d-flex justify-content-center mt-5">FORMULAIRE DE CONNECTION</h2>
@@ -31,5 +34,4 @@
     </form>
 
 </div>
-@endsection
- 
+

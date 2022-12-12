@@ -11,6 +11,8 @@ use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\MongoDB\Client;
+use Illuminate\Http\UploadedFile;
 
 class postcontroller extends Controller
 {
@@ -41,6 +43,7 @@ class postcontroller extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
         $role = $request->get('role');
+        $image = $request->file('file');
         $password_confirmation = $request->get('password_confirmation');
 
         $validation = $request->validate([
@@ -53,6 +56,13 @@ class postcontroller extends Controller
 
 
         ]);
+
+        //insertion image
+     /*  $name = $request->file('file')->getClientOriginalName();
+
+        $path = $request->file('file')->store('public/image'); */
+
+
         //controle du mail existant
         foreach ($u::all() as $user) {
 
@@ -76,12 +86,12 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
-        $res->photo = null;
+     /*    $res->name = $name;
+        $res->photo = $path; */
         $res->etat = 1;
         $res->save();
 
         return view("popup");
-
     }
 
     protected function connexion(Request $request)
@@ -90,7 +100,6 @@ class postcontroller extends Controller
         $u = $request->validate([
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
-
 
 
 
@@ -119,31 +128,36 @@ $validation = $request->validate([
             if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
                 if ($user->role === 'administrateur') {
                     return redirect('/api/post');
-                } else
-                 {
-                    return redirect('/api/user');
+                } elseif ($user->role === 'user_simple') {
+                    return redirect('/api/userSimple');
                 }
 
 
 
             }
-
         }
 
+
         $validation = $request->validate([
-            'email' => ['accepted'],
+            'msg' => ['accepted'],
 
         ]);
 
-
-}
 
 
     }
 
 
+    public function ARCHIVER(Request $request)
+    {
+        $u = new assane();
+        $users = assane::all();
+        foreach ($users as $user) {
+            /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
+            if ($user->etat === 0) {
+                return redirect('/api/archive');
+            }
+        }
 
-
-
-
-
+        }
+    }

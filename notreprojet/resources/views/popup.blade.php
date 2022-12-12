@@ -25,7 +25,7 @@
             <div class="modal-header">
              <div><h5 class="modal-title" style="color: green; margin-left:140px;">Inscription reussi </h5></div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"><a href="/post"></a>&times;</span>
                 </button>
             </div>
             <div class="modal-body" style="display: flex;justify-content:center;">
