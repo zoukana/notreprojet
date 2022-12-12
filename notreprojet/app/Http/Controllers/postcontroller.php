@@ -130,7 +130,7 @@ class postcontroller extends Controller
         $users = assane::all();
         foreach($users as $user) {
            /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
-                if($user->etat === 0){ return redirect('/api/archive');}
+                if($user->etati === 0){ return redirect('/api/archive');}
             }
        /*  } */
     }
