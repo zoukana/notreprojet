@@ -38,31 +38,31 @@
                        matricule
                     </span>
                       matricule
-{{--                       <h2>{{$utilisateur->email}}</h2>
- --}}                    </span>
+                      <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
+                        nom prenom
+                         <span style="margin-left: 4rem">
+ 
+                             <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
+                         </span>
+                     </span>
+ 
+                     <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
+                         <form class="d-flex" action="chercheUser" method="GET" role="search">
+ 
+                             <input class="form-control me-2" name="nom" type="text" placeholder="Rechercher..."
+                                 aria-label="Search">
+                             <button class="btn btn-outline-secondary text-dark" type="submit">Recherche</button>
+                         </form>
+                     </div>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                             style="font-size:40px;"></i></a>
+ 
+                 </span>
+             </div>
+           </span>
 
-                    <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
-                       nom prenom
-                        <span style="margin-left: 4rem">
-
-                            <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
-                        </span>
-                    </span>
-
-                    <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
-                        <form class="d-flex" action="chercheUser" method="GET" role="search">
-
-                            <input class="form-control me-2" name="nom" type="text" placeholder="Rechercher..."
-                                aria-label="Search">
-                            <button class="btn btn-outline-secondary text-dark" type="submit">Recherche</button>
-                        </form>
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
-                            style="font-size:40px;"></i></a>
-
-                </span>
-            </div>
+                    
 
             <h1 class="d-flex justify-content-center">Espace Administrateur</h1>
 
