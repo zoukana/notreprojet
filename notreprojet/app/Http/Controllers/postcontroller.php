@@ -57,6 +57,7 @@ class postcontroller extends Controller
 
         ]);
 
+          //insertion image
         $name = $request->file('file')->getClientOriginalName();
 
         $path = $request->file('file')->store('public/image');
@@ -74,7 +75,7 @@ class postcontroller extends Controller
             }
         }
 
-        //insertion image
+
 
 
 
@@ -146,6 +147,7 @@ class postcontroller extends Controller
         foreach ($users as $user) {
             if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
                 if ($user->role === 'administrateur') {
+        
                     return redirect('/api/post');
                 } else {
                     return redirect('/api/userSimple');
@@ -170,6 +172,13 @@ class postcontroller extends Controller
             }
        /*  } */
     }
+   /*  public function voir(){
+        $email = request('email');
+        $utilisateur = assane::where('email', $email)->first();
+        dd($utilisateur);
+        return $email;
+    } */
+
 }
 
 
