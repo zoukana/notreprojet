@@ -252,20 +252,20 @@ class PostController extends Controller
     public function Archiv(string $id)
    {
        $users = assane::findOrFail($id);
-       $users->etat = "0";
+       $users->etat = 0;
        $users->save();
        return redirect("api/post");
    }
  
    public function Desarchiv(string $id)
    {
-       $user =  Utilisateur::findOrFail($id);
-       $user->etat =  "1";
+       $user =  assane::findOrFail($id);
+       $user->etat = 1;
        $user->save();
-       return redirect("/api/listearchive");
+       return redirect("/api/userArchive");
    }
 
     }
 
 
-}
+

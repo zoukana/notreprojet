@@ -98,8 +98,6 @@ class postcontroller extends Controller
         return view("popup");
     }
     protected function connexion(Request $request)
-
-    public function connexion(Request $request)
     {
         $u = new assane();
         $u = $request->validate([
@@ -118,43 +116,7 @@ class postcontroller extends Controller
 
             }
         }
-        $validation = $request->validate([
-
-
-        ]);
-        //redirection
-        $users = assane::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
-                if ($user->role === 'administrateur') {
-                    return redirect('/api/post');
-                } 
-                else{
-                 
-                    return redirect('/api/user');
-                }
-            }
-
-                } elseif ($user->role === 'user_simple') {
-                    return redirect('/api/userSimple');
-                }
-            }
-        }
-
-        $validation = $request->validate([]);
-        //redirection
-        $users = assane::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
-                if ($user->role === 'administrateur') {
-        
-                    return redirect('/api/post');
-                } else {
-                    return redirect('/api/userSimple');
-                }
-            }
-
-        }
+       
         $validation = $request->validate([
             'msg' => ['accepted'],
 
@@ -172,16 +134,11 @@ class postcontroller extends Controller
             }
        /*  } */
     }
-   /*  public function voir(){
-        $email = request('email');
-        $utilisateur = assane::where('email', $email)->first();
-        dd($utilisateur);
-        return $email;
-    } */
+  
 
 }
 
 
-    }
-}
+    
+
 
