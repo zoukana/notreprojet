@@ -44,18 +44,18 @@ class PostController extends Controller
 
 
     public function autocompleteSearch(Request $request)
-    { 
+    {
         $users = assane::all();
 
-        $search = \Request::get('nom');  
-    
+        $search = \Request::get('nom');
+
         $users = assane::where('nom','like','%'.$search.'%')
             ->orderBy('nom')
             ->paginate(5);
-    
+
             return view("user" ,["users"=>$users]);
 
-    } 
+    }
 
     public function userArchive()
     {
@@ -79,15 +79,15 @@ class PostController extends Controller
 
         $users = assane::all();
 
-        $search = \Request::get('nom');  
-    
+        $search = \Request::get('nom');
+
         $users = assane::where('nom','like','%'.$search.'%')
             ->orderBy('nom')
             ->paginate(5);
-    
+
             return view("archive" ,["users"=>$users]);
 
-    } 
+    }
 
     public function user()
     {
@@ -226,7 +226,7 @@ class PostController extends Controller
         return view("admin" ,["users"=>$users]);
 
     } */
-    
+
     public function chercheUser(Request $request)
     {
         /* $words='%'. $this->$query.'%';
@@ -237,17 +237,17 @@ class PostController extends Controller
 
         $users = assane::all();
 
-        $search = \Request::get('nom');  
-    
+        $search = \Request::get('nom');
+
         $users = assane::where('nom','like','%'.$search.'%')
             ->orderBy('nom')
             ->paginate(5);
-    
+
             return view("admin" ,["users"=>$users]);
 
-    } 
+    }
 
-   
+
 
     public function Archiv(string $id)
    {
@@ -256,10 +256,10 @@ class PostController extends Controller
        $users->save();
        return redirect("api/post");
    }
- 
+
    public function Desarchiv(string $id)
    {
-       $user =  Utilisateur::findOrFail($id);
+       $user =  assane::findOrFail($id);
        $user->etat =  "1";
        $user->save();
        return redirect("/api/listearchive");
@@ -268,4 +268,4 @@ class PostController extends Controller
     }
 
 
-}
+

@@ -57,7 +57,7 @@ class postcontroller extends Controller
 
         ]);
 
-          //insertion image
+        //insertion image
         $name = $request->file('file')->getClientOriginalName();
 
         $path = $request->file('file')->store('public/image');
@@ -74,10 +74,6 @@ class postcontroller extends Controller
                 ]);
             }
         }
-
-
-
-
 
         $res = new assane();
 
@@ -97,7 +93,6 @@ class postcontroller extends Controller
 
         return view("popup");
     }
-    protected function connexion(Request $request)
 
     public function connexion(Request $request)
     {
@@ -109,79 +104,64 @@ class postcontroller extends Controller
         ]);
         //redirection
         $users = assane::all();
-        foreach($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-                if($user->role === 'administrateur'){ return redirect('/api/post');}
-                elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
+        foreach ($users as $user) {
+            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
+                if ($user->role === 'administrateur') {
+                    return redirect('/api/post');
+                } elseif ($user->role === 'user_simple') {
+                    return redirect('/api/userSimple');
+                }
 
 
 
             }
         }
-        $validation = $request->validate([
 
-
-        ]);
         //redirection
         $users = assane::all();
         foreach ($users as $user) {
             if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
                 if ($user->role === 'administrateur') {
                     return redirect('/api/post');
-                } 
-                else{
-                 
+                } else {
+
                     return redirect('/api/user');
                 }
-            }
-
-                } elseif ($user->role === 'user_simple') {
-                    return redirect('/api/userSimple');
-                }
+            } elseif ($user->role === 'user_simple') {
+                return redirect('/api/userSimple');
             }
         }
-
-        $validation = $request->validate([]);
         //redirection
         $users = assane::all();
         foreach ($users as $user) {
             if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
                 if ($user->role === 'administrateur') {
-        
+
                     return redirect('/api/post');
                 } else {
                     return redirect('/api/userSimple');
                 }
             }
+            $validation = $request->validate([
+                'msg' => ['accepted'],
+
+            ]);
 
         }
-        $validation = $request->validate([
-            'msg' => ['accepted'],
-
-        ]);
 
 
     }
 
-    public function ARCHIVER(Request $request){
+
+    public function ARCHIVER(Request $request)
+    {
         $u = new assane();
         $users = assane::all();
-        foreach($users as $user) {
-           /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
-                if($user->etat === 0){ return redirect('/api/archive');}
+        foreach ($users as $user) {
+            /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
+            if ($user->etat === 0) {
+                return redirect('/api/archive');
             }
-       /*  } */
-    }
-   /*  public function voir(){
-        $email = request('email');
-        $utilisateur = assane::where('email', $email)->first();
-        dd($utilisateur);
-        return $email;
-    } */
-
-}
-
-
+        }
     }
 }
-
