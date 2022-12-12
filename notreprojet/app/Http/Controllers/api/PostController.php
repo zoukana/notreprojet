@@ -20,6 +20,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        session_start();
         $users = assane::all();
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
@@ -30,7 +31,7 @@ class PostController extends Controller
     }
 
     public function userSimple()
-    {
+    {   session_start();
         $users = assane::all();
         $users = assane::paginate(5);
         //dd($user->links());
@@ -54,7 +55,7 @@ class PostController extends Controller
     }
 
     public function userArchive()
-    {
+    {   session_start();
         $users = assane::all();
         $users = assane::paginate(5);
         //dd($user->links());
@@ -91,7 +92,7 @@ class PostController extends Controller
 
     public function archive()
     {
-       
+
 
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
@@ -100,11 +101,11 @@ class PostController extends Controller
 
     }
 
- 
+
 
     public function getData(){
 
-     
+
     }
 
 
