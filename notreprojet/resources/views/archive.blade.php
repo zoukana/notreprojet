@@ -93,7 +93,7 @@
 
                                     <span style="display:flex; :space-between;font-size:30px;">
 
-                                    <a onclick= "return confirm(\'voulez vous vraiment désarchiver?')" href="/api/userArchive{{$user->id}}?matricule=' . $a['matricule'] . '">
+                                    <a onclick= "return confirm(\'voulez vous vraiment désarchiver?')" href="/api/Desarchiv/{{$user->id}}">
                                     <i class="bi bi-archive text-dark"></i>
 
                                     </span>

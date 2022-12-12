@@ -94,7 +94,7 @@ class postcontroller extends Controller
         return view("popup");
     }
 
-    public function connexion(Request $request)
+    protected function connexion(Request $request)
     {
         $u = new assane();
         $u = $request->validate([
@@ -117,37 +117,12 @@ class postcontroller extends Controller
             }
         }
 
-        //redirection
-        $users = assane::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
-                if ($user->role === 'administrateur') {
-                    return redirect('/api/post');
-                } else {
 
-                    return redirect('/api/user');
-                }
-            } elseif ($user->role === 'user_simple') {
-                return redirect('/api/userSimple');
-            }
-        }
-        //redirection
-        $users = assane::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
-                if ($user->role === 'administrateur') {
+        $validation = $request->validate([
+            'msg' => ['accepted'],
 
-                    return redirect('/api/post');
-                } else {
-                    return redirect('/api/userSimple');
-                }
-            }
-            $validation = $request->validate([
-                'msg' => ['accepted'],
+        ]);
 
-            ]);
-
-        }
 
 
     }
@@ -163,5 +138,6 @@ class postcontroller extends Controller
                 return redirect('/api/archive');
             }
         }
+
+        }
     }
-}

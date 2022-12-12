@@ -71,11 +71,7 @@ class PostController extends Controller
 
     public function Search(Request $request)
     {
-        /* $words='%'. $this->$query.'%';
-        if(strlen($this->query)<2){
-           $this->$users=user::where('nom', 'LIKE',$words)
-            ->get();
-        } */
+
 
         $users = assane::all();
 
@@ -91,14 +87,14 @@ class PostController extends Controller
 
     public function user()
     {
-        //$users = assane::all();
+
 
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
-        //return view('admin',['user' => $user]);
+
     }
 
     public function archive()
@@ -110,9 +106,6 @@ class PostController extends Controller
         //dd($user->links());
        return view('archive',['users' => $users]);
 
-        //return view('admin',['user' => $user]);
-        //$users = DB::statement('assane')->orderBy('id','desc')->paginate(5);
-        //return view('admin',compact('users'));
     }
 
     // app > http > controllers > EmployeeController.php
@@ -216,24 +209,9 @@ class PostController extends Controller
         //
     }
 
-   /*  public function chercheUser(Request $request)
-    {
-        $users = assane::all();
-        $users = assane::paginate();
-        $users = assane::where('prenom', $request->get('prenom'))->get()->paginate();
-        $users = assane::where('prenom', $request->get('prenom'))->get();
-
-        return view("admin" ,["users"=>$users]);
-
-    } */
 
     public function chercheUser(Request $request)
     {
-        /* $words='%'. $this->$query.'%';
-        if(strlen($this->query)<2){
-           $this->$users=user::where('nom', 'LIKE',$words)
-            ->get();
-        } */
 
         $users = assane::all();
 
@@ -252,7 +230,7 @@ class PostController extends Controller
     public function Archiv(string $id)
    {
        $users = assane::findOrFail($id);
-       $users->etat = "0";
+       $users->etat = 0;
        $users->save();
        return redirect("api/post");
    }
@@ -260,9 +238,11 @@ class PostController extends Controller
    public function Desarchiv(string $id)
    {
        $user =  assane::findOrFail($id);
-       $user->etat =  "1";
+
+       $user->etat = 1;
+
        $user->save();
-       return redirect("/api/listearchive");
+       return redirect("/api/userArchive");
    }
 
     }
