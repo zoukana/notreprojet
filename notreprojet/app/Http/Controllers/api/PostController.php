@@ -46,6 +46,7 @@ class PostController extends Controller
 
     public function autocompleteSearch(Request $request)
     {
+        session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');
@@ -213,7 +214,7 @@ class PostController extends Controller
 
     public function chercheUser(Request $request)
     {
-
+        session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');

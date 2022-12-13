@@ -7,6 +7,10 @@
         @error('msg')
         <div class="text-danger alert alert-danger text-center">{{ $message }}</div>
       @enderror
+      @error('msg1')
+      <div class="text-danger alert alert-danger text-center">{{ $message }}</div>
+    @enderror
+
         @csrf
         <div style="margin-left:20px;">
             <h2 class="d-flex justify-content-center mt-5">FORMULAIRE DE CONNECTION</h2>

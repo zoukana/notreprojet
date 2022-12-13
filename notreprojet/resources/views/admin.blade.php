@@ -33,21 +33,20 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-
-                        <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
+<img src="/images/post/{{$_SESSION['photo']}}" alt="" srcset="" style="height:100px;width:100px;border-radius:100px;">
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </span>
-                    <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
-                        <span>{{ $_SESSION['nom'] }}</span>&nbsp;
+                    <span class="d-flex  mt-5  w-50" style="max-height: 2rem;">
+                        &nbsp;&nbsp;&nbsp;<span>{{ $_SESSION['nom'] }}</span>&nbsp;
                         <span>{{ $_SESSION['prenom'] }}</span>
 
                          <span style="margin-left: 4rem">
 
-                             <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
+                             <h4><a href="/api/userArchive" class="text-white text-decoration-none">liste des archives</a> </h4>
                          </span>
                      </span>
 
-                     <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
+                     <div class="ml-auto  mt-5 " style="margin-left:auto;max-height: 2.5rem;">
                          <form class="d-flex" action="chercheUser" method="GET" role="search">
 
                              <input class="form-control me-2" name="nom" type="text" placeholder="Rechercher..."
@@ -56,7 +55,7 @@
                          </form>
                      </div>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="/pop" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                     <a href="/" class="mt-4"><i class="bi bi-box-arrow-right text-white "
                              style="font-size:40px;"></i></a>
 
                  </span>

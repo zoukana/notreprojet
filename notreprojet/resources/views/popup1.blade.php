@@ -1,4 +1,4 @@
-@extends('layouts.commun')
+{{-- @extends('layouts.commun')
 @section('content')
 
 
@@ -32,3 +32,4 @@
     }
 </script>
 @endsection
+ --}}
