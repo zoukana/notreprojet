@@ -22,6 +22,7 @@ class PostController extends Controller
         /*ici la session_start dans cette index permet de démarrer au niveau de espace admin
         pour l'affichage du nom,prenom et matricule*/
         session_start();
+
         $users = assane::all();
 
 
