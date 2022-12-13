@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,12 +33,14 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
+
                         <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </span>
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
                         <span>{{ $_SESSION['nom'] }}</span>&nbsp;
                         <span>{{ $_SESSION['prenom'] }}</span>
+
                          <span style="margin-left: 4rem">
 
                              <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
@@ -94,7 +95,7 @@
                                     <span style="display:flex; justify-content:space-between;font-size:30px;">
                                   <a  title="modifer" onclick= "return confirm('\'voulez vous vraiment modifier?')" href="post/editForm/{{$user->id}}"><i class="bi bi-pencil-square text-dark "></i></a>
                                   &nbsp;
-                                    <a title="archiver"  onclick= "return confirm(\'voulez vous vraiment archiver?')" href="/api/Archiv/{{$user->id}}"><i class="bi bi-archive-fill text-dark"></i></a>
+                                    <a title="archiver"  onclick= "return confirm('\'voulez vous vraiment archiver?')" href="/api/Archiv/{{$user->id}}"><i class="bi bi-archive-fill text-dark"></i></a>
                                     <a href=""></a>
                                     <form class="d-flex " action="/api/post/switchRole/{{$user->id}}" method="post">
                                         <div class="form-group"><button type="submit"><i class="bi bi-arrow-repeat text-dark"></i></button></div>

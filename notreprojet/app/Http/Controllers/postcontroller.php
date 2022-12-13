@@ -30,14 +30,10 @@ class postcontroller extends Controller
 
         return 'SN-2022_' . $randomString;
     }
-
-
     //controle du formulaire
-
     public function inscription(Request $request)
     {
         $u = new assane();
-
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');
         $email = $request->get('email');
@@ -58,9 +54,14 @@ class postcontroller extends Controller
         ]);
 
         //insertion image
-     /*  $name = $request->file('file')->getClientOriginalName();
 
+      $name = $request->file('file')->getClientOriginalName();
+
+        $path = $request->file('file')->store('public/image');
+
+     /*  $name = $request->file('file')->getClientOriginalName();
         $path = $request->file('file')->store('public/image'); */
+
 
 
         //controle du mail existant
@@ -86,8 +87,7 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
-     /*    $res->name = $name;
-        $res->photo = $path; */
+
         $res->etat = 1;
         $res->save();
 
@@ -118,6 +118,8 @@ class postcontroller extends Controller
             $_SESSION['nom'] = $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
+
+            $_SESSION['photo'] = $user->photo;
 
             return redirect('/api/post');
         }
