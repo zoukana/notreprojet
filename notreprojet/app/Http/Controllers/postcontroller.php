@@ -111,12 +111,11 @@ class postcontroller extends Controller
 
                 //dd(session('matricule'));
         if($user->role === 'administrateur'){
-            //demarage de la session
-            session_start();
-            $_SESSION['nom']= $user->nom;
+            Session_start();
+            $_SESSION['nom'] = $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
-            //  $_SESSION['photo'] = $user->photo;
+
             return redirect('/api/post');
         }
         elseif ( $user->role === 'user_simple') {
@@ -171,4 +170,8 @@ $validation = $request->validate([
         }
 
         }
+
+
     }
+
+

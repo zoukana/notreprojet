@@ -35,7 +35,6 @@
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
                         <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
-                        {{-- <span class="border border-danger">{{ $_SESSION['matricule'] }}</span> --}}
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </span>
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
@@ -56,7 +55,7 @@
                          </form>
                      </div>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                     <a href="/pop" class="mt-1"><i class="bi bi-box-arrow-right text-white "
                              style="font-size:40px;"></i></a>
 
                  </span>

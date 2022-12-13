@@ -236,6 +236,15 @@ class PostController extends Controller
        return redirect("/api/userArchive");
    }
 
+
+   public function deconnection(Request $request)
+    {
+        session_start();
+        session_destroy();
+        return redirect('/');
+
+    }
+
     }
 
 
