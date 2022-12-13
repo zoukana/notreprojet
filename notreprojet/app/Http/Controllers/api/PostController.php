@@ -259,7 +259,7 @@ class PostController extends Controller
     {
         session_start();
         session_destroy();
-        return redirect('/');
+        return redirect('/connexion');
 
     }
 
