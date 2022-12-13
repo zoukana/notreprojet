@@ -255,11 +255,11 @@ class PostController extends Controller
    }
 
 
-   public function deconnection(Request $request)
+   public function deconnexion(Request $request)
     {
         session_start();
         session_destroy();
-        return redirect('/connexion');
+        return redirect('/');
 
     }
 
