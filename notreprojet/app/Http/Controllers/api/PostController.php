@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\api;
-
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -20,20 +18,21 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+
         session_start();
         $users = assane::all();
-        /*return response ()->json($user);*/
-        $users = assane::paginate(5);
+     
+
+
+        $users = assane::where("etat", '=', 1)->paginate(5);
         //dd($user->links());
        return view('admin',['users' => $users]);
-
-        //return view('admin',['user' => $user]);
     }
 
     public function userSimple()
     {   session_start();
         $users = assane::all();
-        $users = assane::paginate(5);
+        $users = assane::where("etat", '=', 1)->paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
@@ -57,7 +56,7 @@ class PostController extends Controller
     public function userArchive()
     {   session_start();
         $users = assane::all();
-        $users = assane::paginate(5);
+        $users = assane::where("etat", '=', 0)->paginate(5);
         //dd($user->links());
        return view('archive',['users' => $users]);
 
@@ -133,13 +132,13 @@ class PostController extends Controller
     public function switchRole(string $id)
     {
         $user = assane::findOrFail($id);
-        if($user->role === "admin")
+        if($user->role === "administrateur")
         {
-            $user->role = "user";
+            $user->role = "user_simple";
         }
         else
         {
-            $user->role = "admin";
+            $user->role = "administrateur";
         }
         $user->save();
         return redirect("/api/post");
@@ -163,7 +162,13 @@ class PostController extends Controller
      */
     public function edit(string $id , Request $request)
     {
+        $u = new assane();
+        $validation = $request->validate([
+            'nom' => ['required'],
+            'prenom' => ['required'],
+            'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
+        ]);
         $user = assane::findOrFail($id);
         $user->nom=$request->get("nom");
         $user->prenom=$request->get("prenom");
@@ -246,5 +251,3 @@ class PostController extends Controller
     }
 
     }
-
-
