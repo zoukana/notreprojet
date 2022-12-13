@@ -20,21 +20,24 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        /*ici la session_start dans cette index permet de démarrer au niveau de espace admin
+        pour l'affichage du nom,prenom et matricule*/
         session_start();
         $users = assane::all();
         /*return response ()->json($user);*/
         $users = assane::paginate(5);
-        //dd($user->links());
        return view('admin',['users' => $users]);
 
         //return view('admin',['user' => $user]);
     }
 
     public function userSimple()
-    {   session_start();
+    {
+        /*démarrer au niveau de espace user
+        pour l'affichage du nom,prenom et matricule */
+         session_start();
         $users = assane::all();
         $users = assane::paginate(5);
-        //dd($user->links());
        return view('user',['users' => $users]);
 
     }
