@@ -17,7 +17,7 @@ use Illuminate\Http\UploadedFile;
 class postcontroller extends Controller
 {
 
-
+//generation de matricule
     function generateMatricule($n = 3)
     {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -28,7 +28,7 @@ class postcontroller extends Controller
             $randomString .= $characters[$index];
         }
 
-        return 'simplon_2022-' . $randomString;
+        return 'SN-2022_' . $randomString;
     }
     //controle du formulaire
     public function inscription(Request $request)
@@ -54,9 +54,14 @@ class postcontroller extends Controller
         ]);
 
         //insertion image
+
       $name = $request->file('file')->getClientOriginalName();
 
         $path = $request->file('file')->store('public/image');
+
+     /*  $name = $request->file('file')->getClientOriginalName();
+        $path = $request->file('file')->store('public/image'); */
+
 
 
         //controle du mail existant
@@ -82,8 +87,7 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
-         $res->name = $name;
-        $res->photo = $path;
+
         $res->etat = 1;
         $res->save();
 
@@ -111,11 +115,17 @@ class postcontroller extends Controller
             $_SESSION['nom'] = $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
+
             $_SESSION['photo'] = $user->photo;
 
             return redirect('/api/post');
         }
-        elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
+        elseif ( $user->role === 'user_simple') {
+            session_start();
+            $_SESSION['nom']= $user->nom;
+            $_SESSION['prenom'] = $user->prenom;
+            $_SESSION['matricule'] = $user->matricule;
+            return redirect('/api/userSimple');}
 
 
    }
@@ -162,4 +172,8 @@ $validation = $request->validate([
         }
 
         }
+
+
     }
+
+

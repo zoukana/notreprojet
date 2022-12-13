@@ -33,21 +33,18 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-                        <img src="storage/app/public/image,<?= base64_encode($_SESSION['photo'])?>"  class="rounded-circle" height="80" width="80" alt="{{$_SESSION['photo']}}">
-                        <span>{{$_SESSION['matricule']}}</span>
-                     </span>
 
+                        <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
+                        <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
+                    </span>
+                    <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
+                        <span>{{ $_SESSION['nom'] }}</span>&nbsp;
+                        <span>{{ $_SESSION['prenom'] }}</span>
 
-                      <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
-                       <span>{{$_SESSION['prenom']}}</span>
-                       <br>
-                       <br>
-                       <span>{{$_SESSION['nom']}}</span>
                          <span style="margin-left: 4rem">
 
                              <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
-
-                            </span>
+                         </span>
                      </span>
 
                      <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
@@ -59,12 +56,11 @@
                          </form>
                      </div>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                     <a href="/pop" class="mt-1"><i class="bi bi-box-arrow-right text-white "
                              style="font-size:40px;"></i></a>
 
                  </span>
-
-                </span>
+                    </span>
 
 
             </div>

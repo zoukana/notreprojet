@@ -34,14 +34,12 @@
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
                         <img src="/image/phénix.JPG" class="rounded-circle" height="80" width="80" alt="">
-                        matricule
+                        <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </span>
 
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
-                       nom prenom
-                        {{-- <span style="margin-left: 4rem">
-                            <h4><a href="archive_admin.php" class="text-white">liste des archives</a> </h4>
-                        </span> --}}
+                        <span>{{ $_SESSION['nom'] }}</span>&nbsp;
+                        <span>{{ $_SESSION['prenom'] }}</span>
                     </span>
 
                     <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
