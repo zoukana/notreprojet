@@ -102,12 +102,11 @@ class postcontroller extends Controller
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
 
-
     ]);
     //redirection
    $users = assane::all();
    foreach($users as $user) {
-    if ($user->email == $request->get("email") && $user->password == $request->get("password")){
+    if ($user->email == $request->get("email") && $user->password == $request->get("password") ){
 
                 //dd(session('matricule'));
         if($user->role === 'administrateur'){
@@ -124,29 +123,9 @@ class postcontroller extends Controller
 
    }
 }
-
-$validation = $request->validate([
-
-        ]);
-        //redirection
-        $users = assane::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
-                if ($user->role === 'administrateur') {
-                    return redirect('/api/post');
-                } elseif ($user->role === 'user_simple') {
-                    return redirect('/api/userSimple');
-                }
-
-
-
-            }
-        }
-
-
         $validation = $request->validate([
             'msg' => ['accepted'],
-
+            
         ]);
 
 

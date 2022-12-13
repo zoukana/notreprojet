@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -42,6 +43,7 @@ class PostController extends Controller
 
     public function autocompleteSearch(Request $request)
     {
+        session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');
@@ -203,7 +205,7 @@ class PostController extends Controller
 
     public function chercheUser(Request $request)
     {
-
+        session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');
