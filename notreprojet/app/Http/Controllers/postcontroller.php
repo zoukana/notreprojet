@@ -36,15 +36,15 @@ class postcontroller extends Controller
 
     public function inscription(Request $request)
     {
-        $u = new assane();
+    $u = new assane();
 
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');
         $email = $request->get('email');
         $password = $request->get('password');
         $role = $request->get('role');
-        $image = $request->file('file');
-        $password_confirmation = $request->get('password_confirmation');
+
+      $password_confirmation = $request->get('password_confirmation');
 
         $validation = $request->validate([
             'nom' => ['required'],
@@ -58,10 +58,6 @@ class postcontroller extends Controller
         ]);
 
         //insertion image
-      $name = $request->file('file')->getClientOriginalName();
-
-        $path = $request->file('file')->store('public/image');
-
 
         //controle du mail existant
         foreach ($u::all() as $user) {
@@ -86,8 +82,16 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
-         $res->name = $name;
-        $res->photo = $path;
+        if($request->hasFile('file')){
+            $file= $request->file('file');
+            $extension = $file ->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('images/post/',$filename);
+            $res->photo=$filename;}
+            else{
+              return $request;
+              $res->photo='';
+            }
         $res->etat = 1;
         $res->save();
 
