@@ -22,7 +22,7 @@ return [
     'alpha_dash' => 'The :attribute must only contain letters, numbers, dashes and underscores.',
     'alpha_num' => 'The :attribute must only contain letters and numbers.',
     'array' => 'The :attribute must be an array.',
-    'before' => 'The :attribute must be a date before :date.',
+    'before' => 'compte archiver.',
     'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
     'between' => [
         'array' => 'The :attribute must have between :min and :max items.',
@@ -113,7 +113,7 @@ return [
         'symbols' => 'The :attribute must contain at least one symbol.',
         'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
     ],
-    'present' => 'The :attribute field must be present.',
+    'present' => 'compte archiver.',
     'prohibited' => 'The :attribute field is prohibited.',
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',

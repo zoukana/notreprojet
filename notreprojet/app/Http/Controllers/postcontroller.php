@@ -102,7 +102,6 @@ class postcontroller extends Controller
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
 
-
     ]);
     //redirection
    $users = assane::all();
@@ -110,7 +109,7 @@ class postcontroller extends Controller
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
 
                 //dd(session('matricule'));
-        if($user->role === 'administrateur'){
+        if($user->role === 'administrateur' && $user->etat === 1){
             Session_start();
             $_SESSION['nom'] = $user->nom;
             $_SESSION['prenom'] = $user->prenom;
@@ -120,39 +119,26 @@ class postcontroller extends Controller
 
             return redirect('/api/post');
         }
-        elseif ( $user->role === 'user_simple') {
+        elseif ( $user->role === 'user_simple'  && $user->etat === 1) {
             session_start();
             $_SESSION['nom']= $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
             return redirect('/api/userSimple');}
+            else{
+                $validation = $request->validate([
+                    'msg1' => ['present'],
+                    
+                ]);
+            }
 
 
    }
 }
-
-$validation = $request->validate([
-
-        ]);
-        //redirection
-        $users = assane::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->get("email") && $user->password == $request->get("password")) {
-                if ($user->role === 'administrateur') {
-                    return redirect('/api/post');
-                } elseif ($user->role === 'user_simple') {
-                    return redirect('/api/userSimple');
-                }
-
-
-
-            }
-        }
-
-
         $validation = $request->validate([
             'msg' => ['accepted'],
-
+            
+            
         ]);
 
 
