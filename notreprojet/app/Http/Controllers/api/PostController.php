@@ -31,7 +31,7 @@ class PostController extends Controller
     }
 
     public function userSimple()
-    {
+    {   session_start();
         $users = assane::all();
         $users = assane::paginate(5);
         //dd($user->links());
@@ -55,7 +55,7 @@ class PostController extends Controller
     }
 
     public function userArchive()
-    {
+    {   session_start();
         $users = assane::all();
         $users = assane::paginate(5);
         //dd($user->links());
@@ -235,6 +235,15 @@ class PostController extends Controller
        $user->save();
        return redirect("/api/userArchive");
    }
+
+
+   public function deconnection(Request $request)
+    {
+        session_start();
+        session_destroy();
+        return redirect('/');
+
+    }
 
     }
 

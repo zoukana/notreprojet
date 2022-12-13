@@ -17,7 +17,7 @@ use Illuminate\Http\UploadedFile;
 class postcontroller extends Controller
 {
 
-
+//generation de matricule
     function generateMatricule($n = 3)
     {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -28,7 +28,7 @@ class postcontroller extends Controller
             $randomString .= $characters[$index];
         }
 
-        return 'simplon_2022-' . $randomString;
+        return 'SN-2022_' . $randomString;
     }
 
 
@@ -119,7 +119,12 @@ class postcontroller extends Controller
 
             return redirect('/api/post');
         }
-        elseif ( $user->role === 'user_simple') { return redirect('/api/userSimple');}
+        elseif ( $user->role === 'user_simple') {
+            session_start();
+            $_SESSION['nom']= $user->nom;
+            $_SESSION['prenom'] = $user->prenom;
+            $_SESSION['matricule'] = $user->matricule;
+            return redirect('/api/userSimple');}
 
 
    }
@@ -166,4 +171,8 @@ $validation = $request->validate([
         }
 
         }
+
+
     }
+
+
