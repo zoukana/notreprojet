@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,12 +33,14 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
+
                         <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </span>
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">
                         <span>{{ $_SESSION['nom'] }}</span>&nbsp;
                         <span>{{ $_SESSION['prenom'] }}</span>
+
                          <span style="margin-left: 4rem">
 
                              <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
