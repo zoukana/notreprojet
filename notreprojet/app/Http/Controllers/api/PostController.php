@@ -67,7 +67,7 @@ class PostController extends Controller
     public function Search(Request $request)
     {
 
-
+        session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');
