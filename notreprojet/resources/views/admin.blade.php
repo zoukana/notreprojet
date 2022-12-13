@@ -95,7 +95,7 @@
                                     <span style="display:flex; justify-content:space-between;font-size:30px;">
                                   <a  title="modifer" onclick= "return confirm('\'voulez vous vraiment modifier?')" href="post/editForm/{{$user->id}}"><i class="bi bi-pencil-square text-dark "></i></a>
                                   &nbsp;
-                                    <a title="archiver"  onclick= "return confirm(\'voulez vous vraiment archiver?')" href="/api/Archiv/{{$user->id}}"><i class="bi bi-archive-fill text-dark"></i></a>
+                                    <a title="archiver"  onclick= "return confirm('\'voulez vous vraiment archiver?')" href="/api/Archiv/{{$user->id}}"><i class="bi bi-archive-fill text-dark"></i></a>
                                     <a href=""></a>
                                     <form class="d-flex " action="/api/post/switchRole/{{$user->id}}" method="post">
                                         <div class="form-group"><button type="submit"><i class="bi bi-arrow-repeat text-dark"></i></button></div>

@@ -109,8 +109,9 @@
       <div class="input-control col-md-6 mb-2">
         <div class="">
           <label for="inputPrenom4" class="form-label">Prenom</label>
-          <input type="Prenom" name="prenom" class="form-control border border-3 border-secondary"value="{{{$user->prenom}}}" id="prenom" placeholder="prenom" style="background-color:rgba(227, 215, 206, 1)">
-          <span id="erreur1"></span>
+          <input type="Prenom" name="prenom" class="form-control  value="{{{$user->prenom}}}" id="prenom" placeholder="prenom" style="background-color:rgba(227, 215, 206, 1)">
+        
+
         </div>
       </div>
       <div class="input-control col-md-6">
@@ -119,6 +120,7 @@
           <input type="Email"name="email" class="form-control border border-3 border-secondary"value="{{{$user->email}}}" id="Email" placeholder="Email" style="background-color:rgba(227, 215, 206, 1)">
           <span id="erreur2"></span>
         </div>
+
         <center><button type="submit" name="S'Inscrire" class="col- btn-lg text-center mb-4 mt-5 bg-success">Modifier</button></center>
         <a href="/api/post" class="ml-5">Annuler</a>
     </form><br>
