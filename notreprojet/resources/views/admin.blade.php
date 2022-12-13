@@ -44,11 +44,11 @@
                        <br>
                        <br>
                        <span>{{$_SESSION['nom']}}</span>
+
                          <span style="margin-left: 4rem">
 
                              <h4><a href="/api/userArchive" class="text-white">liste des archives</a> </h4>
-
-                            </span>
+                         </span>
                      </span>
 
                      <div class="ml-auto  mt-3 " style="margin-left:auto;max-height: 2.5rem;">
@@ -60,12 +60,11 @@
                          </form>
                      </div>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="/" class="mt-1"><i class="bi bi-box-arrow-right text-white "
+                     <a href="/pop" class="mt-1"><i class="bi bi-box-arrow-right text-white "
                              style="font-size:40px;"></i></a>
 
                  </span>
-
-                </span>
+                    </span>
 
 
             </div>
