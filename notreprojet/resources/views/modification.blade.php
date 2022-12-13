@@ -121,7 +121,6 @@
           <span id="erreur2"></span>
         </div>
 
-
         <center><button type="submit" name="S'Inscrire" class="col- btn-lg text-center mb-4 mt-5 bg-success">Modifier</button></center>
         <a href="/api/post" class="ml-5">Annuler</a>
     </form><br>

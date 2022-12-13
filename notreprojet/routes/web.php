@@ -25,6 +25,9 @@ Route::get('/post', function () {
 Route::get('/modal', function () {
     return view('popup');
 });
+Route::get('/pop', function () {
+    return view('popup1');
+});
 
 
 Route::get('/', function () {
