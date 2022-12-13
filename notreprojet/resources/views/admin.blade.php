@@ -33,8 +33,7 @@
                 <span class="d-flex justify-content-center">
                     <!-- pour l'affichage sur le profil -->
                     <span class="col-1 ">
-
-                        <img src="/image/Andre_Merlin.jpg" class="rounded-circle" height="80" width="80" alt="">
+<img src="/images/post/{{$_SESSION['photo']}}" alt="" srcset="" style="height:100px;width:100px;border-radius:100px;">
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </span>
                     <span class="d-flex  mt-4  w-50" style="max-height: 2rem;">

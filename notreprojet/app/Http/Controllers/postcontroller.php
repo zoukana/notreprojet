@@ -87,7 +87,16 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
-
+        if($request->hasFile('file')){
+            $file= $request->file('file');
+            $extension = $file ->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('images/post/',$filename);
+            $res->photo=$filename;}
+            else{
+              return $request;
+              $user->photo='';
+            }
         $res->etat = 1;
         $res->save();
 
@@ -128,7 +137,7 @@ class postcontroller extends Controller
             else{
                 $validation = $request->validate([
                     'msg1' => ['present'],
-                    
+
                 ]);
             }
 
@@ -137,8 +146,8 @@ class postcontroller extends Controller
 }
         $validation = $request->validate([
             'msg' => ['accepted'],
-            
-            
+
+
         ]);
 
 
