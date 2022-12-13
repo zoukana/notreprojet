@@ -18,16 +18,18 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        session_start();
+        $users = assane::all();
 
         $users = assane::where("etat", '=', 1)->paginate(5);
-
+        //dd($user->links());
        return view('admin',['users' => $users]);
     }
 
     public function userSimple()
     {
         $users = assane::all();
-        $users = assane::where("etat", '=', 0)->paginate(5);
+        $users = assane::where("etat", '=', 1)->paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
@@ -51,7 +53,7 @@ class PostController extends Controller
     public function userArchive()
     {
         $users = assane::all();
-        $users = assane::paginate(5);
+        $users = assane::where("etat", '=', 0)->paginate(5);
         //dd($user->links());
        return view('archive',['users' => $users]);
 
