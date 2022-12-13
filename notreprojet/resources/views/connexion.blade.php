@@ -2,7 +2,7 @@
 @section('content')
 
 
-    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:200px; border-radius:10px;background-color:#D9D9D9; width:40%;">
+    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:150px; border-radius:10px;background-color:#D9D9D9; width:60%;">
     <form action="/connexion" method="POST" class="container" >
         @error('msg')
         <div class="text-danger alert alert-danger text-center">{{ $message }}</div>

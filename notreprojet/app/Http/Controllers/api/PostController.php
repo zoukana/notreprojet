@@ -21,7 +21,7 @@ class PostController extends Controller
 
         session_start();
         $users = assane::all();
-     
+
 
 
         $users = assane::where("etat", '=', 1)->paginate(5);
@@ -214,13 +214,27 @@ class PostController extends Controller
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%')
+        $users = assane::where('nom','like','%'.$search.'%' )
             ->orderBy('nom')
             ->paginate(5);
 
             return view("admin" ,["users"=>$users]);
 
     }
+ /*     public function chercheUtilisateur(Request $request)
+    {
+        session_start();
+        $users = assane::all();
+
+        $search = \Request::get('nom');
+
+        $users = assane::where('nom','like','%'.$search.'%' && $_SESSION['role'] === 'user_simple')
+            ->orderBy('nom')
+            ->paginate(5);
+
+            return view("user" ,["users"=>$users]);
+
+    } */
 
 
 
