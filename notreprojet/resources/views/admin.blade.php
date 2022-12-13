@@ -55,7 +55,7 @@
                          </form>
                      </div>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="/" class="mt-4"><i class="bi bi-box-arrow-right text-white "
+                     <a href="deconnexion" class="mt-4"><i class="bi bi-box-arrow-right text-white "
                              style="font-size:40px;"></i></a>
 
                  </span>

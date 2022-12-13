@@ -22,6 +22,8 @@ class PostController extends Controller
         /*ici la session_start dans cette index permet de démarrer au niveau de espace admin
         pour l'affichage du nom,prenom et matricule*/
         session_start();
+        if (!isset($_SESSION['matricule']))
+            return redirect('/');
 
         $users = assane::all();
 
@@ -37,6 +39,8 @@ class PostController extends Controller
         /*démarrer au niveau de espace user
         pour l'affichage du nom,prenom et matricule */
          session_start();
+         if (!isset($_SESSION['matricule']))
+            return redirect('/');
         $users = assane::all();
         $users = assane::where("etat", '=', 1)->paginate(5);
         //dd($user->links());
@@ -62,6 +66,8 @@ class PostController extends Controller
 
     public function userArchive()
     {   session_start();
+        if (!isset($_SESSION['matricule']))
+            return redirect('/');
         $users = assane::all();
         $users = assane::where("etat", '=', 0)->paginate(5);
         //dd($user->links());
@@ -253,7 +259,7 @@ class PostController extends Controller
     {
         session_start();
         session_destroy();
-        return redirect('/connexion');
+        return redirect('/');
 
     }
 
