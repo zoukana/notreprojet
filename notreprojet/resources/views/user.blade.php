@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-<span></span>
+
             <div class="row">
 
                 <div class="d-flex my-4 col-md-12">
