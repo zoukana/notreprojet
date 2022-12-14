@@ -102,17 +102,6 @@ class PostController extends Controller
 
     }
 
-    public function archive()
-    {
-
-
-        /*return response ()->json($user);*/
-        $users = assane::paginate(5);
-        //dd($user->links());
-       return view('archive',['users' => $users]);
-
-    }
-
 
 
     public function getData(){
