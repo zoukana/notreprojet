@@ -37,13 +37,8 @@
       <div class="input-control col-md-6 mb-2">
         <div class="">
           <label for="inputPrenom4" class="form-label">Prenom</label>
-<<<<<<< HEAD
-          <input type="Prenom" name="prenom" class="form-control border border-3 border-secondary "value="{{{$user->prenom}}}" id="prenom" placeholder="prenom" style="background-color:rgba(227, 215, 206, 1)">
-
-=======
           <input type="Prenom" name="prenom" class="form-control"  value="{{{$user->prenom}}}" id="prenom" placeholder="prenom" style="background-color:rgba(227, 215, 206, 1)">
         
->>>>>>> 577cc666abb00d8ac12af8911a0a1895f1a797f9
 
         </div>
       </div>
