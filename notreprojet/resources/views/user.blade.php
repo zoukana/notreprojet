@@ -25,11 +25,11 @@
                     </div>
                 </div>
             </div>
-
+<span></span>
             <div class="row">
 
                 <div class="d-flex my-4 col-md-12">
-                    <form class="d-flex" action="chercheUser" method="GET" role="search">
+                    <form class="d-flex" action="autocompleteSearch" method="GET" role="search">
 
                         <input class="form-control me-2" name="nom" type="text" placeholder="Rechercher..."
                             aria-label="Search">

@@ -24,15 +24,17 @@ class PostController extends Controller
 
 
 
-        $users = assane::where("etat", '=', 1)->paginate(5);
+        // $users = assane::where("etat", '=', 1)->paginate(5);
+      $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->paginate(5);
         //dd($user->links());
-       return view('admin',['users' => $users]);
+   return view('admin',['users' => $users]);
     }
 
     public function userSimple()
     {   session_start();
         $users = assane::all();
-        $users = assane::where("etat", '=', 1)->paginate(5);
+        // $users = assane::where("etat", '=', 1)->paginate(5);
+        $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->where("role", '=', 'user_simple')->paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
@@ -214,21 +216,21 @@ class PostController extends Controller
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%' )
+        $users = assane::where('nom','like','%'.$search.'%' )->where('matricule', '!=' , $_SESSION['matricule'])
             ->orderBy('nom')
             ->paginate(5);
 
             return view("admin" ,["users"=>$users]);
 
     }
- /*     public function chercheUtilisateur(Request $request)
+/*     public function chercheU(Request $request)
     {
         session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%' && $_SESSION['role'] === 'user_simple')
+        $users = assane::where('nom','like','%'.$search.'%' )->where('matricule', '!=' , $_SESSION['matricule'])->where("role", '=', 'user_simple')
             ->orderBy('nom')
             ->paginate(5);
 
