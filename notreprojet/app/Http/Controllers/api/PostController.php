@@ -47,7 +47,7 @@ class PostController extends Controller
 
     }
 
-
+//fonction qui gere la recherche au niveau de la page user_simple
     public function autocompleteSearch(Request $request)
     {
         session_start();
@@ -57,25 +57,22 @@ class PostController extends Controller
 
         $users = assane::where('nom','like','%'.$search.'%')->where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)
             ->orderBy('nom')
-            ->orderBy('nom')
             ->paginate(5);
 
             return view("user" ,["users"=>$users]);
 
     }
-
+//fonction qui gere la a recuperer tous les utilisateur dont leur etat=0
     public function userArchive()
     {   session_start();
         if (!isset($_SESSION['matricule']))
             return redirect('/');
         $users = assane::all();
         $users = assane::where("etat", '=', 0)->paginate(5);
-        //dd($user->links());
        return view('archive',['users' => $users]);
 
-        //return view('admin',['user' => $user])
     }
-
+//fonction qui gere la recherche des utilisateur archiver au niveau de la page des archivé
     public function Search(Request $request)
     {
 
@@ -89,16 +86,6 @@ class PostController extends Controller
             ->paginate(5);
 
             return view("archive" ,["users"=>$users]);
-
-    }
-
-    public function user()
-    {
-
-        $users = assane::paginate(5);
-        //dd($user->links());
-       return view('user',['users' => $users]);
-
 
     }
 
@@ -130,7 +117,7 @@ class PostController extends Controller
     {
         //
     }
-
+//fonction qui gere le switch
     public function switchRole(string $id)
     {
         $user = assane::findOrFail($id);
@@ -162,6 +149,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+    //fonction qui gere la modification
     public function edit(string $id , Request $request)
     {
         $u = new assane();
@@ -179,7 +167,7 @@ class PostController extends Controller
         $user->save();
         return redirect("/api/post");
     }
-
+//fonction nous permettant l'affichage du formulaire de modification
     public function editForm(string $id)
     {
         $user = assane::findOrFail($id);
@@ -207,7 +195,7 @@ class PostController extends Controller
     {
         //
     }
-
+//fonction qui gere la recherche au niveau de la page admin
     public function chercheUser(Request $request)
     {
         session_start();
@@ -222,23 +210,8 @@ class PostController extends Controller
             return view("admin" ,["users"=>$users]);
 
     }
-/*     public function chercheU(Request $request)
-    {
-        session_start();
-        $users = assane::all();
 
-        $search = \Request::get('nom');
-
-        $users = assane::where('nom','like','%'.$search.'%' )->where('matricule', '!=' , $_SESSION['matricule'])->where("role", '=', 'user_simple')
-            ->orderBy('nom')
-            ->paginate(5);
-
-            return view("user" ,["users"=>$users]);
-
-    } */
-
-
-
+//fonction qui gere l'archivage des utilisateurs
     public function Archiv(string $id)
    {
        $users = assane::findOrFail($id);
@@ -247,7 +220,7 @@ class PostController extends Controller
        $users->save();
        return redirect("api/post");
    }
-
+//fonction pour la gestion de la désarchivage
    public function Desarchiv(string $id)
    {
        $user =  assane::findOrFail($id);
@@ -257,7 +230,7 @@ class PostController extends Controller
        return redirect("/api/userArchive");
    }
 
-
+//fonction qui gere la déconnexion et de détruire les session
    public function deconnexion(Request $request)
     {
         session_start();
