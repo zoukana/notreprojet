@@ -32,5 +32,5 @@ Route::get('Archiv/{id}', [PostController::class, "Archiv"]);
 Route::get('userArchive', [PostController::class, "userArchive"]);
 Route::get('Search', [PostController::class, 'Search']);
 Route::get('Desarchiv/{id}', [PostController::class, "Desarchiv"]);
-Route::get('deconnection', [PostController::class, "deconnection"]);
+Route::get('deconnexion', [PostController::class, "deconnexion"]);
 
