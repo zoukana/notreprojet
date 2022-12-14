@@ -13,7 +13,7 @@
                         <img src="/images/post/{{$_SESSION['photo']}}" alt="" srcset="" style="height:100px;width:100px;border-radius:100px;">
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
                     </div>
-                    <div class="d-flex  m-4  w-50">
+                    <div class=" m-4  w-50">
                         <h3>{{ $_SESSION['prenom'] }} {{ $_SESSION['nom'] }}</h3>
                         <p class="fs-6" style="margin-left: 15px">{{ $_SESSION['role'] }} </p>
 
