@@ -14,13 +14,13 @@
                     </div>
                     <div class="  m-4  w-50">
                         <h3>{{ $_SESSION['prenom'] }} {{ $_SESSION['nom'] }}</h3>
-                        <p class="fs-6" style="margin-left: 15px">{{ $_SESSION['role'] }} </p>
+                        <p class="fs-6" style="margin-left: 5px">{{ $_SESSION['role'] }} </p>
                     </div>
                     <div class="my-5">
                         <a href="deconnexion" class="m-2"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:20px; margin-left: 200px;"> Deconnexion</i>
 
-         
+
                         </a>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 </div>
                 <table class="table table-hover" style="box-shadow: 0px 2px 2px rgba(0,0,0,0.3">
                     <thead class="text-white btn-lg text-center bg-primary">
-                       
+
                         <tr class="border  border-dark">
                             <th scope="col" class="border border-light">Nom</th>
                             <th scope="col" class="border border-light">Prenom</th>
