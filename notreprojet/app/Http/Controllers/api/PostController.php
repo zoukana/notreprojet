@@ -41,7 +41,7 @@ class PostController extends Controller
             return redirect('/');
         $users = assane::all();
         // $users = assane::where("etat", '=', 1)->paginate(5);
-        $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->where("role", '=', 'user_simple')->paginate(5);
+        $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->paginate(5);
         //dd($user->links());
        return view('user',['users' => $users]);
 
@@ -55,7 +55,7 @@ class PostController extends Controller
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%')->where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->where('role','=','user_simple')
+        $users = assane::where('nom','like','%'.$search.'%')->where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)
             ->orderBy('nom')
             ->orderBy('nom')
             ->paginate(5);
@@ -101,6 +101,19 @@ class PostController extends Controller
 
 
     }
+
+    public function archive()
+    {
+
+
+        /*return response ()->json($user);*/
+        $users = assane::paginate(5);
+        //dd($user->links());
+       return view('archive',['users' => $users]);
+
+    }
+
+
 
     public function getData(){
 
@@ -220,7 +233,20 @@ class PostController extends Controller
             return view("admin" ,["users"=>$users]);
 
     }
+/*     public function chercheU(Request $request)
+    {
+        session_start();
+        $users = assane::all();
 
+        $search = \Request::get('nom');
+
+        $users = assane::where('nom','like','%'.$search.'%' )->where('matricule', '!=' , $_SESSION['matricule'])->where("role", '=', 'user_simple')
+            ->orderBy('nom')
+            ->paginate(5);
+
+            return view("user" ,["users"=>$users]);
+
+    } */
 
 
 

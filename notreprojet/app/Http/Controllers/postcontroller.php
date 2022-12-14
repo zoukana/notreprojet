@@ -55,8 +55,6 @@ class postcontroller extends Controller
 
         ]);
 
-
-
         //controle du mail existant
         foreach ($u::all() as $user) {
 
@@ -137,7 +135,6 @@ class postcontroller extends Controller
 
                 ]);
             }
-
    }
 }
         $validation = $request->validate([
@@ -145,10 +142,20 @@ class postcontroller extends Controller
 
 
         ]);
-
     }
 
+    public function ARCHIVER(Request $request)
+    {
+        $u = new assane();
+        $users = assane::all();
+        foreach ($users as $user) {
+            /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
+            if ($user->etat === 0) {
+                return redirect('/api/archive');
+            }
+        }
+
+        }
+
     }
-
-
 
