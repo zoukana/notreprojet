@@ -24,7 +24,7 @@
   <div class="container bg-light col-lg-4 col-md-4 col-sm-12 mt-4" style="border-radius: 10px ; box-shadow: 4px 4px 4px #000 ;">
     <br>
     <form action="/api/post/edit/{{$user->id}}"  method="POST" id="submit" class="h-100 d-flex align-items-center justify-content-center flex-column">
-      <center><button type="button" class="text-white btn-lg text-center mt-2 bg-primary " disabled>Formulaire de modification</button></center><br>
+      <center><button type="button" class="text-white btn-lg text-center mt-2 bg-primary" disabled>Formulaire de modification</button></center><br>
 
 
       <div class="input-control col-md-6">
@@ -52,7 +52,7 @@
 
 
         <center><button type="submit" name="S'Inscrire" class="col- btn-lg text-center mb-4 mt-5 bg-primary">Modifier</button></center>
-        <a href="/api/post" class="ml-5">Annuler</a>
+        <a href="/api/post" class="ml-5 text-center">Annuler</a>
     </form><br>
   </div>
 
