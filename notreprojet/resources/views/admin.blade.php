@@ -18,7 +18,7 @@
                         {{-- <p>{{ $_SESSION['role'] }} </p> --}}
                     </div>
                     <div class="my-5">
-                        <a href="/" class="m-2"><i class="bi bi-box-arrow-right text-white "
+                        <a href="deconnexion" class="m-2"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:20px; margin-left: 200px;"> Deconnexion</i>
                         </a>
                     </div>
