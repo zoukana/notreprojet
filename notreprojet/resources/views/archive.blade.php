@@ -15,6 +15,8 @@
                     </div>
                     <div class="d-flex  m-4  w-50">
                         <h3>{{ $_SESSION['prenom'] }} {{ $_SESSION['nom'] }}</h3>
+                        <p class="fs-6" style="margin-left: 15px">{{ $_SESSION['role'] }} </p>
+
                         {{-- <p>{{ $_SESSION['role'] }} </p> --}}
                     </div>
                     <div class="my-5">
