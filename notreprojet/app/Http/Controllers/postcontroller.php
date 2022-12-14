@@ -33,14 +33,16 @@ class postcontroller extends Controller
     //controle du formulaire
     public function inscription(Request $request)
     {
+
         $u = new assane();
+
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');
         $email = $request->get('email');
         $password = $request->get('password');
         $role = $request->get('role');
-        $image = $request->file('file');
-        $password_confirmation = $request->get('password_confirmation');
+
+      $password_confirmation = $request->get('password_confirmation');
 
         $validation = $request->validate([
             'nom' => ['required'],
@@ -52,15 +54,6 @@ class postcontroller extends Controller
 
 
         ]);
-
-        //insertion image
-
-      $name = $request->file('file')->getClientOriginalName();
-
-        $path = $request->file('file')->store('public/image');
-
-     /*  $name = $request->file('file')->getClientOriginalName();
-        $path = $request->file('file')->store('public/image'); */
 
 
 
@@ -95,6 +88,7 @@ class postcontroller extends Controller
             $res->photo=$filename;}
             else{
               return $request;
+
               $user->photo='';
             }
         $res->etat = 1;
@@ -117,17 +111,15 @@ class postcontroller extends Controller
    foreach($users as $user) {
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
 
-
+                //dd(session('matricule'));
         if($user->role === 'administrateur' && $user->etat === 1){
-            /*dans la function redirection vers admin/user j'ai introduit des variable pour la
-            récuperation et l'affichage du nom,prenom,et matricule au niveau de l'utilisateur connecter
-            et démarrer la session */
             Session_start();
             $_SESSION['nom'] = $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
-
+            $_SESSION['role'] = $user->role;
             $_SESSION['photo'] = $user->photo;
+           $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where('etat', '=', "1")->paginate(5);
 
             return redirect('/api/post');
         }
@@ -136,6 +128,7 @@ class postcontroller extends Controller
             $_SESSION['nom']= $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
+            $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where('etat', '=', "1")->paginate(8);
             return redirect('/api/userSimple');}
             else{
                 $validation = $request->validate([

@@ -6,7 +6,7 @@
     @csrf
     <div>
 
-      <h2 class="text-center bg-primary col-6">FORMULAIRE D'INSCRIPTION</h2>
+      <h2 class="text-center bg-primary col-12">FORMULAIRE D'INSCRIPTION</h2>
     </div>
 
     <div>
