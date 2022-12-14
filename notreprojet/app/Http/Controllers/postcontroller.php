@@ -78,6 +78,7 @@ class postcontroller extends Controller
         $res->date_inscription = date('y-m-d');
         $res->date_modification = null;
         $res->date_archivage = null;
+        //insertion image
         if($request->hasFile('file')){
             $file= $request->file('file');
             $extension = $file ->getClientOriginalExtension();
@@ -86,8 +87,7 @@ class postcontroller extends Controller
             $res->photo=$filename;}
             else{
               return $request;
-
-              $user->photo='';
+            $user->photo='';
             }
         $res->etat = 1;
         $res->save();
@@ -102,14 +102,12 @@ class postcontroller extends Controller
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
-
     ]);
     //redirection
    $users = assane::all();
    foreach($users as $user) {
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
 
-                //dd(session('matricule'));
         if($user->role === 'administrateur' && $user->etat === 1){
             Session_start();
             $_SESSION['nom'] = $user->nom;
@@ -126,7 +124,10 @@ class postcontroller extends Controller
             $_SESSION['nom']= $user->nom;
             $_SESSION['prenom'] = $user->prenom;
             $_SESSION['matricule'] = $user->matricule;
-            $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where('etat', '=', "1")->paginate(8);
+            $_SESSION['photo'] = $user->photo;
+            $_SESSION['role'] = $user->role;
+                 /*    dd($_SESSION['role']); */
+            $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where('etat', '=', "1")->paginate(5);
             return redirect('/api/userSimple');}
             else{
                 $validation = $request->validate([

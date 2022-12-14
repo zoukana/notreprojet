@@ -1,7 +1,5 @@
- @extends('layouts.commun')
+@extends('layouts.commun')
 @section('content')
-
-
     <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:150px; border-radius:10px;background-color:#D9D9D9; width:40%;">
     <form action="/connexion" method="POST" class="container" >
         @error('msg')

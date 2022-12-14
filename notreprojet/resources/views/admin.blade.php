@@ -9,17 +9,18 @@
                 <div class="d-flex justify-content-space-between">
                     <!-- pour l'affichage sur le profil -->
                     <div class="">
-                        <img src="/images/post/{{$_SESSION['photo']}}" alt="" srcset="" style="height:100px;width:100px;border-radius:100px;">
+                         <img src="/images/post/{{$_SESSION['photo']}}" alt="" srcset="" style="height:100px;width:100px;border-radius:100px;">
                         <p class="fs-6">{{ $_SESSION['matricule'] }}</p>
-
                     </div>
-                    <div class="d-flex  m-4  w-50">
+                    <div class="  m-4  w-50">
                         <h3>{{ $_SESSION['prenom'] }} {{ $_SESSION['nom'] }}</h3>
-                        {{-- <p>{{ $_SESSION['role'] }} </p> --}}
+                        <p class="fs-6" style="margin-left: 15px">{{ $_SESSION['role'] }} </p>
                     </div>
                     <div class="my-5">
                         <a href="deconnexion" class="m-2"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:20px; margin-left: 200px;"> Deconnexion</i>
+
+         
                         </a>
                     </div>
                 </div>
@@ -38,6 +39,7 @@
                 </div>
                 <table class="table table-hover" style="box-shadow: 0px 2px 2px rgba(0,0,0,0.3">
                     <thead class="text-white btn-lg text-center bg-primary">
+                       
                         <tr class="border  border-dark">
                             <th scope="col" class="border border-light">Nom</th>
                             <th scope="col" class="border border-light">Prenom</th>
@@ -65,7 +67,8 @@
                                     <form class="d-flex " action="/api/post/switchRole/{{$user->id}}" method="post">
                                        <button type="submit"><i class="bi bi-arrow-repeat text-dark"></i></button>
                                     </form>
-
+{{--                                     <a title="switch" href="/api/post/switchRole/{{$user->id}}"> <i class="bi bi-archive-fill text-dark"></i></a>
+ --}}
                                     </span>
                                     </td>
                                 </tr>
@@ -88,4 +91,3 @@
             }
         </style>
         @endsection
-

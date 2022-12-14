@@ -18,16 +18,14 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
 
+    {
         /*ici la session_start dans cette index permet de démarrer au niveau de espace admin
         pour l'affichage du nom,prenom et matricule*/
         session_start();
         if (!isset($_SESSION['matricule']))
             return redirect('/');
-
         $users = assane::all();
-
         // $users = assane::where("etat", '=', 1)->paginate(5);
       $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->paginate(5);
         //dd($user->links());
@@ -57,7 +55,8 @@ class PostController extends Controller
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%')
+        $users = assane::where('nom','like','%'.$search.'%')->where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)->where('role','=','user_simple')
+            ->orderBy('nom')
             ->orderBy('nom')
             ->paginate(5);
 
@@ -80,12 +79,12 @@ class PostController extends Controller
     public function Search(Request $request)
     {
 
-
+        session_start();
         $users = assane::all();
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%')
+        $users = assane::where('nom','like','%'.$search.'%')->where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 0)
             ->orderBy('nom')
             ->paginate(5);
 
@@ -205,7 +204,7 @@ class PostController extends Controller
 
         $search = \Request::get('nom');
 
-        $users = assane::where('nom','like','%'.$search.'%' )->where('matricule', '!=' , $_SESSION['matricule'])
+        $users = assane::where('nom','like','%'.$search.'%' )->where('matricule', '!=' , $_SESSION['matricule'])->where("etat", '=', 1)
             ->orderBy('nom')
             ->paginate(5);
 
@@ -218,6 +217,7 @@ class PostController extends Controller
    {
        $users = assane::findOrFail($id);
        $users->etat = 0;
+       $users->date_archivage = date('y-m-d');
        $users->save();
        return redirect("api/post");
    }
@@ -227,7 +227,6 @@ class PostController extends Controller
        $user =  assane::findOrFail($id);
 
        $user->etat = 1;
-
        $user->save();
        return redirect("/api/userArchive");
    }
