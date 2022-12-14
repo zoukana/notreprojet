@@ -14,7 +14,7 @@
                     </div>
                     <div class="  m-4  w-50">
                         <h3>{{ $_SESSION['prenom'] }} {{ $_SESSION['nom'] }}</h3>
-                        <p class="fs-6" style="margin-left: 5px">{{ $_SESSION['role'] }} </p>
+                        <p class="fs-6" style="margin-left: 15px">{{ $_SESSION['role'] }} </p>
                     </div>
                     <div class="my-5">
                         <a href="deconnexion" class="m-2"><i class="bi bi-box-arrow-right text-white "
