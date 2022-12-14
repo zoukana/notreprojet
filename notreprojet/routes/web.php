@@ -14,51 +14,34 @@ use App\Http\Controllers\postcontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//route de redirection page connexion
 Route::get('/', function () {
     return view('connexion');
 });
-
+//route de redirection page inscription
 Route::get('/post', function () {
     return view('inscription');
 });
+//route de redirection popup d'inscription reussi
 Route::get('/modal', function () {
     return view('popup');
 });
-Route::get('/pop', function () {
-    return view('popup1');
-});
-
-
-Route::get('/', function () {
-    return view('connexion');
-});
-
-
-
-
+//route de redirection page archiver
 Route::get('/archive', function () {
     return view('archive');
 });
 
-
-
-Route::get('/inscription', function () {
+/* Route::get('/inscription', function () {
     return view('inscription');
-});
-
+}); */
+//route de redirection page admin
 Route::get('/admin', function () {
     return view('admin');
 });
-
+//route de redirection page user_simple
 Route::get('/user', function () {
     return view('user');
 });
-/*
-Route::get('/archive', function () {
-    return view('archive');
-}); */
-
 
 
 Route::post("/connexion",[postcontroller::class,"connexion"]);
@@ -80,19 +63,6 @@ Route::get('/archive', function () {
     return view('archive');
 });
 
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes:insertion image
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 
