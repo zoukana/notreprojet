@@ -24,7 +24,7 @@
   <div class="container bg-light col-lg-4 col-md-4 col-sm-12 mt-4" style="border-radius: 10px ; box-shadow: 4px 4px 4px #000 ;">
     <br>
     <form action="/api/post/edit/{{$user->id}}"  method="POST" id="submit" class="h-100 d-flex align-items-center justify-content-center flex-column">
-      <center><button type="button" class="text-white btn-lg text-center mt-2 bg-primary" disabled>Formulaire de modification</button></center><br>
+      <center><button type="button" class="text-white btn-lg text-center mt-2 bg-primary " disabled>Formulaire de modification</button></center><br>
 
 
       <div class="input-control col-md-6">
@@ -37,13 +37,8 @@
       <div class="input-control col-md-6 mb-2">
         <div class="">
           <label for="inputPrenom4" class="form-label">Prenom</label>
-<<<<<<< HEAD
           <input type="Prenom" name="prenom" class="form-control border border-3 border-secondary "value="{{{$user->prenom}}}" id="prenom" placeholder="prenom" style="background-color:rgba(227, 215, 206, 1)">
 
-=======
-          <input type="Prenom" name="prenom" class="form-control"  value="{{{$user->prenom}}}" id="prenom" placeholder="prenom" style="background-color:rgba(227, 215, 206, 1)">
-        
->>>>>>> 577cc666abb00d8ac12af8911a0a1895f1a797f9
 
         </div>
       </div>
@@ -56,7 +51,7 @@
 
 
 
-        <center><button type="submit" name="S'Inscrire" class="col- btn-lg text-center mb-4 mt-5 bg-success">Modifier</button></center>
+        <center><button type="submit" name="S'Inscrire" class="col- btn-lg text-center mb-4 mt-5 bg-primary">Modifier</button></center>
         <a href="/api/post" class="ml-5">Annuler</a>
     </form><br>
   </div>
