@@ -89,10 +89,7 @@ class PostController extends Controller
 
     }
 
-
-
     public function getData(){
-
 
     }
 
@@ -210,6 +207,7 @@ class PostController extends Controller
             return view("admin" ,["users"=>$users]);
 
     }
+
 
 //fonction qui gere l'archivage des utilisateurs
     public function Archiv(string $id)

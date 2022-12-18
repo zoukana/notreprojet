@@ -95,15 +95,19 @@ class postcontroller extends Controller
 
         return view("popup");
     }
+
 //fonction pour gerer le controle de saisit au niveau du formullaire de connexion
+
     protected function connexion(Request $request)
     {
+        //message d'erreur et vérification du format du mail
         $u = new assane();
         $u = $request->validate([
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
     ]);
+
     //redirection
    $users = assane::all();//variable permettant de recuperer tous les utilisateur du modele assane
    foreach($users as $user)//fonction pour parcourir tous les utilisateur de la bdd
@@ -111,6 +115,7 @@ class postcontroller extends Controller
         //condition pour verifier si le mail et le mot_de_passe saisit existe
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
 //si c'est vrai  alors on verifie si le role est admin et que l'etat=1(afficher)
+
         if($user->role === 'administrateur' && $user->etat === 1){
             //ainsi on recuperer ses données grace a des sessions
             Session_start();
@@ -126,6 +131,9 @@ class postcontroller extends Controller
 //ensuite on fait une redirection vers la page admin grace a "api/post"
             return redirect('/api/post');
         }
+
+        //redirection vers un user_simple recupérer les données de son profil 
+
         //sinon_si le role role est user_simple et l'etat=1 on refait la mm chose
         elseif ( $user->role === 'user_simple'  && $user->etat === 1) {
             session_start();
@@ -136,6 +144,7 @@ class postcontroller extends Controller
             $_SESSION['role'] = $user->role;
             $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where('etat', '=', "1")->paginate(5);
             return redirect('/api/userSimple');}
+
             //sinon on lui dit que l'email ou le mot_de_passe n'existe pas
             else{
                 $validation = $request->validate([
@@ -144,6 +153,7 @@ class postcontroller extends Controller
                 ]);
             }
    }
+}//message d'erreur pour user qui n'exixte pas dans la base de donnée
 }
 /*maintenant quant l'utilisateur n'est ni admin ,ni user et que son etat!=1 alors
 on suppose qu'il est archiver*/

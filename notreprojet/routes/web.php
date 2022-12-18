@@ -26,28 +26,32 @@ Route::get('/post', function () {
 Route::get('/modal', function () {
     return view('popup');
 });
-//route de redirection page archiver
-Route::get('/archive', function () {
-    return view('archive');
+Route::get('/pop', function () {
+    return view('popup1');
 });
 
-/* Route::get('/inscription', function () {
+
+Route::get('/', function () {
+    return view('connexion');
+});
+
+
+Route::get('/inscription', function () {
     return view('inscription');
-}); */
-//route de redirection page admin
-Route::get('/admin', function () {
+});
+
+/* Route::get('/admin', function () {
     return view('admin');
-});
-//route de redirection page user_simple
-Route::get('/user', function () {
+}); */
+
+/* Route::get('/user', function () {
     return view('user');
-});
+}); */
+
 
 
 Route::post("/connexion",[postcontroller::class,"connexion"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
-
-Route::get("/user",[postcontroller::class,"user"]);
 
 Route::get('/modification', function () {
     return view('modification');
@@ -56,12 +60,7 @@ Route::get('/modification', function () {
 
 Route::get('/{email}', [postcontroller::class, 'voir']);
 
-Route::get("/ARCHIVER",[postcontroller::class,"ARCHIVER"]);
 
-
-Route::get('/archive', function () {
-    return view('archive');
-});
 
 
 

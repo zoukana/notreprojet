@@ -1,7 +1,7 @@
 
 @extends('layouts.commun')
 @section('content')
-<body style="background-color:rgba(156, 156, 163, 1)">
+<body>
     @csrf
     <div class="container bg-white pt-1">
         <div class="container admin col-lg-12 mt-5">
