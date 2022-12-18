@@ -1,6 +1,7 @@
 @extends('layouts.commun')
 @section('content')
-    <div class="container col-md-5 bg-white border border-dark" style="margin-top:150px; border-radius:10px ;">
+
+    <div class="container " style="border: 1px solid black; display:flex;justify-content:center;margin-top:150px; border-radius:10px;background-color:#D9D9D9; width:50%;">
     <form action="/connexion" method="POST" class="container" >
         @error('msg')
         <div class="text-danger alert alert-danger text-center">{{ $message }}</div>

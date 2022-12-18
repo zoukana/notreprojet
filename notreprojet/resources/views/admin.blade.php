@@ -20,7 +20,7 @@
                         <a href="deconnexion" class="m-2"><i class="bi bi-box-arrow-right text-white "
                             style="font-size:20px; margin-left: 200px;"> Deconnexion</i>
 
-         
+
                         </a>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 </div>
                 <table class="table table-hover" style="box-shadow: 0px 2px 2px rgba(0,0,0,0.3">
                     <thead class="text-white btn-lg text-center bg-primary">
-                       
+
                         <tr class="border  border-dark">
                             <th scope="col" class="border border-light">Nom</th>
                             <th scope="col" class="border border-light">Prenom</th>
@@ -64,9 +64,8 @@
                                     <span style="display:flex; justify-content:space-between;">
                                     <a title="modifer" onclick= "return confirm('\'voulez vous vraiment modifier?')" href="post/editForm/{{$user->id}}"><i class="bi bi-pencil-square text-dark "></i></a>
                                     <a title="archiver"  onclick= "return confirm('\'voulez vous vraiment archiver?')" href="/api/Archiv/{{$user->id}}"><i class="bi bi-archive-fill text-dark"></i></a>
-                                    <form class="d-flex " action="/api/post/switchRole/{{$user->id}}" method="post">
-                                       <button type="submit"><i class="bi bi-arrow-repeat text-dark"></i></button>
-                                    </form>
+                                    <a title="switch" href="/api/post/switchRole/{{$user->id}}?post"><i class="bi bi-arrow-repeat text-dark"></i></a>
+
 {{--                                     <a title="switch" href="/api/post/switchRole/{{$user->id}}"> <i class="bi bi-archive-fill text-dark"></i></a>
  --}}
                                     </span>

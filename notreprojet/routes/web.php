@@ -14,14 +14,15 @@ use App\Http\Controllers\postcontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//route de redirection page connexion
 Route::get('/', function () {
     return view('connexion');
 });
-
+//route de redirection page inscription
 Route::get('/post', function () {
     return view('inscription');
 });
+//route de redirection popup d'inscription reussi
 Route::get('/modal', function () {
     return view('popup');
 });
@@ -48,6 +49,7 @@ Route::get('/inscription', function () {
 }); */
 
 
+
 Route::post("/connexion",[postcontroller::class,"connexion"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
 
@@ -60,19 +62,6 @@ Route::get('/{email}', [postcontroller::class, 'voir']);
 
 
 
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes:insertion image
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 
