@@ -35,36 +35,21 @@ Route::get('/', function () {
 });
 
 
-
-
-Route::get('/archive', function () {
-    return view('archive');
-});
-
-
-
 Route::get('/inscription', function () {
     return view('inscription');
 });
 
-Route::get('/admin', function () {
+/* Route::get('/admin', function () {
     return view('admin');
-});
-
-Route::get('/user', function () {
-    return view('user');
-});
-/*
-Route::get('/archive', function () {
-    return view('archive');
 }); */
 
+/* Route::get('/user', function () {
+    return view('user');
+}); */
 
 
 Route::post("/connexion",[postcontroller::class,"connexion"]);
 Route::post("/inscription",[postcontroller::class,"inscription"]);
-
-Route::get("/user",[postcontroller::class,"user"]);
 
 Route::get('/modification', function () {
     return view('modification');
@@ -73,12 +58,7 @@ Route::get('/modification', function () {
 
 Route::get('/{email}', [postcontroller::class, 'voir']);
 
-Route::get("/ARCHIVER",[postcontroller::class,"ARCHIVER"]);
 
-
-Route::get('/archive', function () {
-    return view('archive');
-});
 
 
 

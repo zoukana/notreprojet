@@ -94,20 +94,21 @@ class postcontroller extends Controller
 
         return view("popup");
     }
-
+//fonction de la connexion
     protected function connexion(Request $request)
     {
+        //message d'erreur et vérification du format du mail
         $u = new assane();
         $u = $request->validate([
             'password' => ['required'],
             'email' => 'required |regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix',
 
     ]);
-    //redirection
+    //redirection de l'utilisateur apres a connection 
    $users = assane::all();
    foreach($users as $user) {
     if ($user->email == $request->get("email") && $user->password == $request->get("password")){
-
+ //redirection vers un admin vérifier l'etat archiver ou pas recupérer les données de son profil 
         if($user->role === 'administrateur' && $user->etat === 1){
             Session_start();
             $_SESSION['nom'] = $user->nom;
@@ -119,6 +120,7 @@ class postcontroller extends Controller
 
             return redirect('/api/post');
         }
+        //redirection vers un user_simple recupérer les données de son profil 
         elseif ( $user->role === 'user_simple'  && $user->etat === 1) {
             session_start();
             $_SESSION['nom']= $user->nom;
@@ -129,6 +131,7 @@ class postcontroller extends Controller
                  /*    dd($_SESSION['role']); */
             $users = assane::where('matricule', '!=' , $_SESSION['matricule'])->where('etat', '=', "1")->paginate(5);
             return redirect('/api/userSimple');}
+            //message d'erreur pour user archiver
             else{
                 $validation = $request->validate([
                     'msg1' => ['present'],
@@ -136,7 +139,7 @@ class postcontroller extends Controller
                 ]);
             }
    }
-}
+}//message d'erreur pour user qui n'exixte pas dans la base de donnée
         $validation = $request->validate([
             'msg' => ['accepted'],
 
@@ -144,18 +147,6 @@ class postcontroller extends Controller
         ]);
     }
 
-    public function ARCHIVER(Request $request)
-    {
-        $u = new assane();
-        $users = assane::all();
-        foreach ($users as $user) {
-            /*  if ($user->email == $request->get("email") && $user->password == $request->get("password")){ */
-            if ($user->etat === 0) {
-                return redirect('/api/archive');
-            }
-        }
-
-        }
 
     }
 

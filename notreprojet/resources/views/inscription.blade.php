@@ -1,12 +1,13 @@
 @extends('layouts.commun')
 @section('content')
-<div class="container my-5">
+<div class="container col-md-6 bg-white border border-dark" style="margin-top:150px; border-radius:10px" >
+  
 
-  <form action="/inscription" method="POST" class="row g-3" style="background-color:#D9D9D9" id="loginform" enctype="multipart/form-data">
+  <form action="/inscription" method="POST" class="row g-3"  id="loginform" enctype="multipart/form-data">
     @csrf
     <div>
 
-      <h2 class="text-center bg-primary col-12">FORMULAIRE D'INSCRIPTION</h2>
+      <h2 class="text-center mt-5">FORMULAIRE D'INSCRIPTION</h2>
     </div>
 
     <div>
@@ -60,14 +61,14 @@
       <div class="text-danger">{{ $message }}</div>
     @enderror
     </div>
-    <div class="col-auto">
-      <input type="file" class="form-control" id="file" name="file" id="file"  placeholder="PHOTO" accept=".jpeg, .png, .jpj">
+    <div class="col-6">
+      <input type="file" class="form-control mb-4" id="file" name="file" id="file"  placeholder="PHOTO" accept=".jpeg, .png, .jpj">
     </div>
     <br>
     <div class="col-6">
-      <input type="submit" id="submit" name="submit" class="btn btn-primary" style="background-color:#05006B">
-
-</div>
+      <input type="submit" id="submit" name="submit" class="btn btn-primary" >
+      <a href="/"><span style="margin-left: 30px;color:black">se connecter?</span></a>
+    </div>
 </form>
 
 
